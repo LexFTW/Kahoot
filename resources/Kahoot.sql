@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Temps de generació: 28-11-2019 a les 19:20:18
+-- Temps de generació: 28-11-2019 a les 19:45:45
 -- Versió del servidor: 5.7.28-0ubuntu0.18.04.4
 -- Versió de PHP: 7.2.24-0ubuntu0.18.04.1
 
@@ -54,7 +54,7 @@ CREATE TABLE `player` (
 CREATE TABLE `question` (
   `id` int(11) NOT NULL,
   `surveyID` int(11) NOT NULL,
-  `text` int(11) NOT NULL
+  `text` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,6 +85,13 @@ CREATE TABLE `survey` (
   `name` varchar(192) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Bolcant dades de la taula `survey`
+--
+
+INSERT INTO `survey` (`id`, `userID`, `name`) VALUES
+(1, 1, 'Not important stuff');
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +105,13 @@ CREATE TABLE `user` (
   `email` varchar(191) NOT NULL,
   `password` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Bolcant dades de la taula `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`) VALUES
+(1, 'Almudena', 'Raya', 'r.almudena@gmail.com', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
 
 -- --------------------------------------------------------
 
@@ -193,12 +207,12 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT per la taula `survey`
 --
 ALTER TABLE `survey`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT per la taula `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restriccions per taules bolcades
 --
