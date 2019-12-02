@@ -72,3 +72,51 @@ body{
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.dashboard__container{
+  padding: 0;
+}
+
+.dashboard__nav{
+  background: #46178F!important;
+}
+
+.dashboard__a{
+  color: white!important;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.dashboard__sidebar{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  overflow-y: auto;
+  position: fixed;
+  z-index: 1;
+  width: 18rem;
+  min-width: 18rem;
+  height: 100%;
+  padding: 2rem 0;
+  background:#fff;
+  box-shadow: .125rem 0 .25rem 0
+  rgba(0,0,0,.1);
+  color:#333;
+}
+
+.sidebar__ul{
+  list-style: none;
+}
+
+.sidebar__li{
+  padding: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.sidebar__a{
+  color: #46178F;
+}

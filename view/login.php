@@ -3,7 +3,7 @@
 
 	if(isset($_POST['username'])){
 		if(login($_POST['username'], $_POST['password'])){
-			header("Location: index.php");
+			header("Location: dashboard.php");
 			die();
 		}else{
 			echo '<script>' .
@@ -20,7 +20,7 @@
 <head>
   <?php include 'layouts/links.php' ?>
 </head>
-<body class="ColorBacground">
+<body class="colorBackground">
 	<main class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-md-6">
