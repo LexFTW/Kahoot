@@ -2,7 +2,7 @@
 	include "../model/database.php";
 	login();
 	function login(){
-		$connection = Database::getInstance("localhost","rogeraws","1234");
+		$connection = Database::getInstance("localhost","root","P@ssw0rd");
 	}
 	
  ?>
