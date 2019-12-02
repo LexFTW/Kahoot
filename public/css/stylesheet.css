@@ -1,0 +1,22 @@
+body{
+  background: #F1F1F1;
+}
+
+.login__card{
+  margin: 150px auto;
+  border: 0;
+  background: transparent;
+}
+
+.login__card-header{
+  background: transparent;
+  border-bottom: 0;
+}
+
+.login__input-group-prepend{
+  background: transparent;
+}
+
+.login__button-submit{
+  padding: 5px 15px;
+}
