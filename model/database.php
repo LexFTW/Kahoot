@@ -22,7 +22,7 @@
         	return self::$instance;
     	}
     	private function connection(){
-    		return  new PDO("mysql:host=".$this-> host.";dbname=kahoot", $this-> user, $this->pass);
+    		return  new PDO("mysql:host=".$this-> host.";dbname=Kahoot", $this-> user, $this->pass);
     	}
 
     	public function getPDO(){
