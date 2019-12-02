@@ -1,5 +1,6 @@
 <?php
 	class Database {
+
 		private static $instance;
 		private $pdo;
 		private $host;
@@ -29,6 +30,15 @@
 
     	public function getPDO(){
     		return $this -> pdo;
+    	}
+
+
+    	public function select($consulta){
+    		$query = $this -> pdo -> prepare($consulta);
+    		$query -> execute();
+    		$registre = $query->fetch();
+
+    		return $registre;
     	}
 
 	}
