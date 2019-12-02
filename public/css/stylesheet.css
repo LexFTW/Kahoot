@@ -13,10 +13,40 @@ body{
   border-bottom: 0;
 }
 
-.login__input-group-prepend{
-  background: transparent;
+.login__input-group{
+  background: white;
+  border: 0;
+  border-radius: 0;
+}
+
+.login__input-form-control{
+  border-radius: 0;
+  border: 0;
 }
 
 .login__button-submit{
-  padding: 5px 15px;
+  width: 100%;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.anonym__card{
+  margin: 150px auto;
+  border: 0;
+  background: transparent;
+}
+
+.anonym__input{
+  outline: none;
+  border-color: none;
+  background: white;
+  border: 0;
+  border-radius: 0;
+}
+
+.anonym__button{
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
 }
