@@ -7,15 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 	 <?php include '../view/layouts/links.html';  ?>
 	 <link rel="stylesheet" type="text/css" href="../public/css/changingBackground.css">
-=======
-	<title>Kahoot</title>
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link rel="stylesheet" href="../public/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../public/css/stylesheet.css">
->>>>>>> 21e8f2a060b8905ef5f1679eb7ade1ad0117b47f
 </head>
 <body>
 	<main class="container-fluid">
