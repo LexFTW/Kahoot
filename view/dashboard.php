@@ -7,15 +7,7 @@
     <?php include 'layouts/nav.php' ?>
     <main class="container-fluid dashboard__container">
       <div class="row">
-				<div class="dashboard__sidebar col-md-3">
-	        <ul class="sidebar__ul">
-	          <li class="sidebar__li sidebar__li--active">
-	              <a href="#" class="sidebar__a">
-									<i class="fas fa-users"></i> Kahoots
-								</a>
-	          </li>
-	        </ul>
-	      </div>
+				<?php include 'layouts/sidebar.php' ?>
 				<div class="dashboard__main offset-3 col-md-9">
 					<div class="card dashboard_main_card mt-3">
 						<div class="card-body">
