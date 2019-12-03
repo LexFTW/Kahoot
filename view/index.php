@@ -13,7 +13,7 @@
 			include '../controller/pinController.php';
 		?>
 	</head>
-	<body class="ColorBacground">
+	<body class="colorBackground">
 		<main class="container-fluid">
 			<div class="anonym">
 				<div class="card anonym__card">
