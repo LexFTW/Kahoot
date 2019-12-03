@@ -1,5 +1,5 @@
 <?php
-	include "../model/database2.php";
+	include "../model/Database.php";
 	$pdo = Database::getInstance("localhost","Kahoot","root","P@ssw0rd")-> getPDO();
 ?>
 <!DOCTYPE html>
