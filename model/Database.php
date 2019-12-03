@@ -13,7 +13,7 @@
 			$this -> table = $table;
 			$this -> user = $user;
 			$this -> pass = $pass;
-    		$this -> pdo =  $this->connection();
+    	$this -> pdo =  $this->connection();
 		}
 
  	 	public static function getInstance($host, $table, $user, $pass){
@@ -25,7 +25,11 @@
         	return self::$instance;
     	}
     	private function connection(){
-    		return  new PDO("mysql:host=".$this -> host.";dbname=".$this -> table.";", $this-> user, $this->pass);
+				try{
+				    return new PDO("mysql:host=".$this -> host.";dbname=".$this -> table.";", $this-> user, $this->pass);
+				 }catch(PDOException $e){
+				    echo '[ERROR] - ' . $e->getMessage();
+				 }
     	}
 
     	public function getPDO(){

@@ -15,6 +15,7 @@ input[type=number]:focus,
 
 body{
   background: #F1F1F1;
+  font-family: Montserrat;
 }
 
 .login__alert{
@@ -97,8 +98,6 @@ body{
   overflow-y: auto;
   position: fixed;
   z-index: 1;
-  width: 18rem;
-  min-width: 18rem;
   height: 100%;
   padding: 2rem 0;
   background:#fff;
@@ -115,8 +114,19 @@ body{
   padding: 5px;
   text-transform: uppercase;
   font-weight: bold;
+  padding: 10px 15px;
+  margin: 0 15px 0 0;
 }
 
-.sidebar__a{
+.sidebar__li--active{
+  background: #F0ECF6;
+}
+
+.sidebar__a, .sidebar__a:hover{
   color: #46178F;
+  text-decoration: none;
+}
+
+.dashboard_main_card{
+  background: transparent; border: 0
 }
