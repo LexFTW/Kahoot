@@ -1,16 +1,18 @@
 <?php
-	session_start();
 	if(isset($_POST['buttonPin'])){
-		$stm = $pdo->prepare("SELECT id FROM `room` where pin=".$_POST['pin']." and status='playing';");
-		$stm->execute();
+		$data = [
+	    'pin' => $_POST['pin']
+		];
+
+		$stm = $pdo->prepare("SELECT id FROM `room` where pin=:pin and status='playing';");
+		$stm->execute($data);
 		$row = $stm->fetchAll();
 
 		if($row){
-			$_SESSION['room']=$row[0][0];			
-			echo"<div class='col-8 mx-auto alert alert-info' role='alert'>You are in!</div>";
+			$_SESSION['roomID']=$row[0][0];			
+			echo '<script type="text/javascript">','window.location.href ="../view/namePin.php";','</script>';
 		}else {
-			//echo '<script type="text/javascript">','window.location.href ="../php/namePin.php";','</script>';
-	   		echo"<div class='col-8 mx-auto alert alert-danger' role='alert'>Wrong pin!</div>";
+	   		echo"<div class='mt-4 col-4 mx-auto alert alert-danger' role='alert'>Pin!</div>";
 		}
 	}
   ?>
