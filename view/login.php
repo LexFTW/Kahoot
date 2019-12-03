@@ -37,7 +37,7 @@
   									<div class="input-group mb-3  mx-auto">
   									  <div class="input-group-prepend">
   									    <span class="input-group-text login__input-group" id="user-addon">
-  												<i class="fas fa-users"></i>
+  												<i class="fas fa-user"></i>
   											</span>
   									  </div>
   									  <input type="text" name="username" class="form-control login__input-form-control" placeholder="Nombre de Usuario" aria-label="Nombre de Usuario" aria-describedby="user-addon">
@@ -49,7 +49,7 @@
   									<div class="input-group mb-3 mx-auto">
   									  <div class="input-group-prepend">
   									    <span class="input-group-text login__input-group" id="password-addon">
-  												<i class="fas fa-users"></i>
+  												<i class="fas fa-lock"></i>
   											</span>
   									  </div>
   									  <input type="password" name="password" class="form-control login__input-form-control" placeholder="Contraseña" aria-label="Contraseña" aria-describedby="password-addon">
