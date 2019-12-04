@@ -7,9 +7,8 @@
 		if(!$login){
 			return False;
 		}else{
-			$_SESSION['userID']=$user['id'];
-			echo $_SESSION['userID'];
-			//return True;
+			$_SESSION['userID']=$login['id'];
+			return True;
 		}
 	}
  ?>

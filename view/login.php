@@ -7,8 +7,8 @@
 
 	if(isset($_POST['username'])){
 		if(login($_POST['username'], $_POST['password'])){
-			//header("Location: dashboard.php");
-			//die();
+			header("Location: dashboard.php");
+			die();
 		}else{
 			echo '<script>' .
 			'window.addEventListener("load", function(){' .
