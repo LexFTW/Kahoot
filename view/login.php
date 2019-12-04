@@ -1,10 +1,14 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+  <?php include 'layouts/links.php' ?>
+  <?php
 	include "../controller/loginController.php";
 
 	if(isset($_POST['username'])){
 		if(login($_POST['username'], $_POST['password'])){
-			header("Location: dashboard.php");
-			die();
+			//header("Location: dashboard.php");
+			//die();
 		}else{
 			echo '<script>' .
 			'window.addEventListener("load", function(){' .
@@ -14,11 +18,6 @@
 		}
 	}
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <?php include 'layouts/links.php' ?>
 </head>
 <body class="colorBackground">
 	<main class="container-fluid">
@@ -40,7 +39,7 @@
   												<i class="fas fa-user"></i>
   											</span>
   									  </div>
-  									  <input type="text" name="username" class="form-control login__input-form-control" placeholder="Nombre de Usuario" aria-label="Nombre de Usuario" aria-describedby="user-addon">
+  									  <input type="text" name="username" class="form-control login__input-form-control" placeholder="Email" aria-label="Nombre de Usuario" aria-describedby="user-addon">
   									</div>
   								</div>
   								<!-- Fin Contraseña -->
@@ -56,12 +55,14 @@
   									</div>
   								</div>
   								<!-- Fin Contraseña -->
-  								<input type="submit" class="btn btn-primary d-block mx-auto login__button-submit" name="submit" value="Iniciar Sesión">
-                </div>
+  								<input type="submit" class="btn btn-primary d-block mx-auto login__button-submit mb-3" name="submit" value="Iniciar Sesión">
+                
 							</form>
-							<div class="alert alert-danger col-8 mx-auto login__alert" role="alert">
-								El usuario y/o la contraseña son incorrectos.
-							</div>
+							<div class="alert alert-danger  login__alert" role="alert">
+								El usuario o la contraseña son incorrectos.
+							</div>	
+				</div>
+							
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,6 @@
-<?php 
-	
+<?php 		
 
-		$stm = $pdo->prepare("SELECT status FROM `room` where id=".$_SESSION['room']." ;");
+		$stm = $pdo->prepare("SELECT status FROM `room` where id=".$_SESSION['roomID']." ;");
 		$stm->execute();
 		$row = $stm->fetchAll();		
 		$status=$row[0][0];	
@@ -11,7 +10,7 @@
 					
 						<div class='lds-roller'><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>";
 		}elseif ($status=="finished") {
-			echo "ERROR";
+			echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";echo "ERROR";
 		}	
 			
 
