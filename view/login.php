@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include 'layouts/links.php' ?>
-  <?php
+  <?php include 'layouts/links.php';
+  
 	include "../controller/loginController.php";
 
 	if(isset($_POST['username'])){

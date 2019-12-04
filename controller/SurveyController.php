@@ -3,9 +3,16 @@
 
   function getSurvey(){
     $db = Database::getInstance("localhost","kahoot","kahoot","P@ssw0rd");
-    $query = "SELECT * FROM survey where userID=".$_SESSION['userID'].";";
-    $surveis = $db->select($query);
+    $surveis = $db->select2("SELECT * FROM survey where userID=".$_SESSION['userID'].";");
 
-    return $surveis;
+    $surveisArray=[];
+	$surveyQuery = $surveis->fetch();
+
+  	while ( $surveyQuery ) {
+	   array_push($surveisArray,$surveyQuery);
+	   $surveyQuery = $surveis->fetch();
+	}
+    return $surveisArray;
 
   }
+

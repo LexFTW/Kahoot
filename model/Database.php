@@ -40,9 +40,16 @@
     	public function select($consulta){
     		$query = $this -> pdo -> prepare($consulta);
     		$query -> execute();
-    		$registre = $query->fetch();
+    		$registre = $query->fetch(PDO::FETCH_ASSOC);
 
     		return $registre;
+    	}
+
+    	public function select2($consulta){
+    		$query = $this -> pdo -> prepare($consulta);
+    		$query -> execute();
+
+    		return $query;
     	}
 
 	}

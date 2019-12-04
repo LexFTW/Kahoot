@@ -21,14 +21,15 @@
 								<table class="table table-responsive-sm">
 									<tbody>
 										<?php
+										
 											foreach ($surveis as $survey) {
 												echo '<tr>' .
-												  '<td class="align-middle">'.$surveis[0].'</td>' .
+												  '<td class="align-middle">'.$survey['name'].'</td>' .
 													'<td class="align-middle">' .
-												  '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button">' .
+												  '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button" value="'.$survey['id'].'">' .
 												  '<i class="fas fa-edit"></i>' .
 												  '</a>' .
-												  '<button type="button" class="btn btn-success float-right" name="button">' .
+												  '<button type="button" class="btn btn-success float-right" name="button" value="'.$survey['id'].'">' .
 												  '<i class="fas fa-play"></i>' .
 												  '</button>' .
 												  '</td>' .
