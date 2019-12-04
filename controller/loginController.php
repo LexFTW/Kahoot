@@ -8,6 +8,7 @@
 			return False;
 		}else{
 			$_SESSION['userID']=$login['id'];
+			$_SESSION['nameUser']=$login['name']." ".$login['lastName'];
 			return True;
 		}
 	}

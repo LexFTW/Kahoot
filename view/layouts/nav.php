@@ -7,6 +7,14 @@
       <li>
         <a role="button" class="btn btn-warning float-right" href="#">Crear</a>
       </li>
+      <li>
+        <a role="button" class="btn btn-info float-left" href="#"> User: <?php echo $_SESSION['nameUser']; ?></a>
+      </li>
+      <li>
+        <a role="button" class="btn btn-danger float-right" href="#"><i class="fas fa-sign-out-alt"></i></a>
+      </li>
+
+      
     </ul>
   </div>
 </nav>
