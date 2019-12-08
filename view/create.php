@@ -1,7 +1,13 @@
+<?php
+
+include "../controller/createController.php";
+
+ ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 	<head>
 		<?php include 'layouts/links.php' ?>
+		<script src="../public/js/script.js" charset="utf-8"></script>
 	</head>
   <body>
     <?php include 'layouts/nav.php' ?>
@@ -11,13 +17,8 @@
         <div class="dashboard__main offset-3 col-md-9">
           <div class="card mt-4">
 						<div class="card-body">
-							<form class="" action="index.html" method="post">
-								<div class="form-group">
-									<input type="text" class="form-control" name="title" placeholder="Introduce un titulo">
-								</div>
-								<div class="form-group">
-									<input type="text" class="form-control" name="title" placeholder="Introduce un titulo">
-								</div>
+							<form action="create.php" method="post">
+
 							</form>
 						</div>
           </div>
