@@ -50,7 +50,6 @@
 				}
 
 				return $array;
-
     	}
 
     public function insert($table, $data = []){
