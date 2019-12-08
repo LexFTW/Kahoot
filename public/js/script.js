@@ -1,7 +1,8 @@
 window.addEventListener('load', function(){
   var form_create = document.getElementsByTagName('form')[0];
   form_create.innerHTML = '<div class="form-group">' +
-  									   '<input type="text" class="form-control" name="title" placeholder="Introduce un titulo">' +
+                       '<input type="text" class="form-control" name="survey" placeholder="Survey oumama">' +
+                       '<input type="text" class="form-control" name="title" placeholder="Introduce un titulo">' +
   								     '</div>' +
   								     '<div class="form-group">' +
   									   '<input type="checkbox" name="true"><label for="true">Verdadero</label>' +

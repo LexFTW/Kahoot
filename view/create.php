@@ -2,6 +2,11 @@
 
 include "../controller/createController.php";
 
+if(isset($_POST)){
+	$title = $_POST['title'];
+	createQuestion('question', ['surveyID' => '1', 'text' => $title]);
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
