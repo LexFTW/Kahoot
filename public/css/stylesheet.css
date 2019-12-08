@@ -1,0 +1,137 @@
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+
+body{
+  background: #F1F1F1;
+  font-family: Montserrat;
+}
+
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.login__alert{
+  border-radius: 0;
+  display: none;
+}
+
+.login__card{
+  margin: 150px auto;
+  border: 0;
+  background: transparent;
+}
+
+.login__card-header{
+  background: transparent;
+  border-bottom: 0;
+}
+
+.login__input-group{
+  background: white;
+  border: 0;
+  border-radius: 0;
+}
+
+.login__input-form-control{
+  border-radius: 0;
+  border: 0;
+}
+
+.login__button-submit{
+  width: 100%;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.anonym__card{
+  margin: 150px auto;
+  border: 0;
+  background: transparent;
+}
+
+.anonym__input{
+  outline: none;
+  border-color: none;
+  background: white;
+  border: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold
+}
+
+.anonym__button{
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dashboard__container{
+  padding: 0;
+}
+
+.dashboard__nav{
+  background: #46178F!important;
+}
+
+.dashboard__a{
+  color: white!important;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.dashboard__sidebar{
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  overflow-y: auto;
+  position: fixed;
+  z-index: 1;
+  height: 100%;
+  padding: 2rem 0;
+  background:#fff;
+  box-shadow: .125rem 0 .25rem 0
+  rgba(0,0,0,.1);
+  color:#333;
+}
+
+.sidebar__ul{
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar__li{
+  padding: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px 15px;
+}
+
+.sidebar__li--active{
+  background: #F0ECF6;
+}
+
+.sidebar__a, .sidebar__a:hover{
+  color: #46178F;
+  text-decoration: none;
+}
+
+.dashboard_main_card{
+  background: transparent; border: 0
+}
