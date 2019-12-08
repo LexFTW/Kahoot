@@ -2,10 +2,14 @@
 
 include "../controller/createController.php";
 
-// if(isset($_POST)){
-// 	$title = $_POST['title'];
-// 	createQuestion('question', ['surveyID' => '1', 'text' => $title]);
-// }
+if(isset($_POST['title'])){
+	$title = $_POST['title'];
+  if(isset($_POST['true'])){
+    createQuestion('question', ['surveyID' => '1', 'text' => $title], 1);
+  }else{
+    createQuestion('question', ['surveyID' => '1', 'text' => $title], 0);
+  }
+}
 
  ?>
 <!DOCTYPE html>

@@ -63,7 +63,7 @@
             $valuesCount = count($valuesArray);
 
             $valuesPlaceholder = '';
-            for ($i=0; $i < $valuesCount; $i++) { 
+            for ($i=0; $i < $valuesCount; $i++) {
                 $valuesPlaceholder .= '?,';
             }
             $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
@@ -74,7 +74,7 @@
             $statement = $this -> pdo -> prepare($query);
 
             if($statement->execute($valuesArray)){
-            	return True;
+            	return $this -> pdo -> lastInsertId();
             }else{
             	return False;
             }

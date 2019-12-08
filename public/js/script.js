@@ -17,7 +17,7 @@ function generateForm(){
        										  '</div>' +
        										  '<div class="media-body align-self-center ">' +
        										    '<h5 class="mt-0" style="display: inline-block">Falso</h5>' +
-       												'<input type="checkbox" name="answer" class="float-right">' +
+       												'<input type="checkbox" name="false" class="float-right">' +
        										  '</div>' +
        										'</div>' +
        									'</div>' +
@@ -28,7 +28,7 @@ function generateForm(){
        										  '</div>' +
        										  '<div class="media-body align-self-center ">' +
        										    '<h5 class="mt-0" style="display: inline-block">Verdadero</h5>' +
-       												'<input type="checkbox" name="answer" class="float-right">' +
+       												'<input type="checkbox" name="true" class="float-right">' +
        										  '</div>' +
        										'</div>' +
        									'</div>' +
