@@ -7,7 +7,6 @@
 		$isInsert = $db -> insert($table,$data);
 
 		createAnswer('answer', ['questionID' => $isInsert, 'rightAnswer' => $answer]);
-
 	}
 
 	function createAnswer($table,$data){

@@ -1,30 +1,33 @@
 <?php
+	session_start();
 	include "../model/Database.php";
-	$pdo = Database::getInstance("localhost","Kahoot","root","")-> getPDO();
+	include "../controller/PincodeController.php";
+
+	if(isset($_POST['surveyId'])){
+		$surveyId = $_POST['surveyId'];
+		$_SESSION['pin'] = generateCodePin($surveyId);
+		createRoom($_POST['surveyId'], $_SESSION['pin']);
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">	
 		<?php
 			include 'layouts/links.php';
 		?>
-		<meta http-equiv="refresh" content="5" > 
+		<meta http-equiv="refresh" content="15" >
 	</head>
-	<body class="colorBackground">
+	<body>
 		<main class="container-fluid">
 			<div class="anonym">
 				<div class="card anonym__card">
 					<div class="card-body anonym__body">
-						
-					
-						
+						<h5><?php echo $_SESSION['pin'] ?></h5>
 					</div>
 				</div>
 			</div>
 		</main>
-		
 	</body>
 </html>

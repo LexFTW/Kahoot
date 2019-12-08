@@ -9,7 +9,7 @@
 		$row = $stm->fetchAll();
 
 		if($row){
-			$_SESSION['roomID']=$row[0][0];			
+			$_SESSION['roomID']=$row[0][0];
 			echo '<script type="text/javascript">','window.location.href ="../view/namePin.php";','</script>';
 		}else {
 	   		echo"<div class='mt-4 col-4 mx-auto alert alert-danger' role='alert'>Pin!</div>";

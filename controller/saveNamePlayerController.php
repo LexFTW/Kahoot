@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST['buttonAnnoymous'])){
 		$data = [
-	    'roomID' => $_SESSION['room'],
+	    'roomID' => '7',
 	    'name' => $_POST['name']
 		];
 		$sql = "INSERT INTO player (roomID, name) VALUES (:roomID, :name);";
@@ -13,8 +13,8 @@
 		$row = $stm2->fetchAll();
 
 		if($row){
-			$_SESSION['playerID']=$row[0][0];
-			echo '<script type="text/javascript">','window.location.href ="../view/play.php";','</script>';			
+			$_SESSION['playerID']=$row[0][0]; // ( . )( . ) <- Oppai
+			echo '<script type="text/javascript">','window.location.href ="../view/play.php";','</script>';
 		}
 	}
-?>	
+?>
