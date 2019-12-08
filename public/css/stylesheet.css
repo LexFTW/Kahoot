@@ -18,6 +18,11 @@ body{
   font-family: Montserrat;
 }
 
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .login__alert{
   border-radius: 0;
   display: none;
@@ -107,6 +112,7 @@ body{
 }
 
 .sidebar__ul{
+  padding: 0;
   list-style: none;
 }
 
@@ -115,7 +121,6 @@ body{
   text-transform: uppercase;
   font-weight: bold;
   padding: 10px 15px;
-  margin: 0 15px 0 0;
 }
 
 .sidebar__li--active{

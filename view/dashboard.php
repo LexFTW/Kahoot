@@ -1,6 +1,12 @@
 <?php
- include '../controller/SurveyController.php';
- $surveis = getSurvey();
+  session_start();
+  include '../controller/SurveyController.php';
+  $surveis = getSurvey();
+
+  if($_SESSION['isLogged'] == 0){
+    header("Location: login.php");
+    die();
+  }
 
  ?>
 <!DOCTYPE html>
@@ -13,28 +19,36 @@
     <main class="container-fluid dashboard__container">
       <div class="row">
 				<?php include 'layouts/sidebar.php' ?>
-				<div class="dashboard__main offset-3 col-md-9">
+				<div class="dashboard__main offset-md-3 col-md-9">
 					<div class="card dashboard_main_card mt-3">
 						<div class="card-body">
-							<p><b>Kahoots (<?php echo count($surveis); ?>)</b></p>
+							<div class="row">
+                <div class="col-md-6 mb-4">
+                  <b>Kahoots (<?php echo count($surveis); ?>)</b>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <form action="create.php" method="post">
+                    <input type="submit" class="btn btn-warning float-right" value="Crear">
+                  </form>
+                </div>
+              </div>
 							<div class="card">
 								<table class="table table-responsive-sm">
 									<tbody>
 										<?php
-											foreach ($surveis as $survey) {
-												echo '<tr>' .
-												  '<td class="align-middle">'.$survey.'</td>' .
-													'<td class="align-middle">' .
-												  '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button">' .
-												  '<i class="fas fa-edit"></i>' .
-												  '</a>' .
-												  '<button type="button" class="btn btn-success float-right" name="button">' .
-												  '<i class="fas fa-play"></i>' .
-												  '</button>' .
-												  '</td>' .
-													'</tr>';
-											}
-
+											for ($i=0; $i < count($surveis); $i++) {
+                        echo '<tr>' .
+                        '<td class="align-middle">'.$surveis[$i]['name'].'</td>' .
+                        '<td class="align-middle">' .
+                        '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button">' .
+                        '<i class="fas fa-edit"></i>' .
+                        '</a>' .
+                        '<button type="button" class="btn btn-success float-right" name="button">' .
+                        '<i class="fas fa-play"></i>' .
+                        '</button>' .
+                        '</td>' .
+                        '</tr>';
+                      }
 										 ?>
 									</tbody>
 								</table>
