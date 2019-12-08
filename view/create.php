@@ -4,10 +4,11 @@ include "../controller/createController.php";
 
 if(isset($_POST['title'])){
 	$title = $_POST['title'];
+  $survey = createSurvey('survey', ['userID' => '1', 'name' => $_POST['survey']]);
   if(isset($_POST['true'])){
-    createQuestion('question', ['surveyID' => '1', 'text' => $title], 1);
+    createQuestion('question', ['surveyID' => $survey, 'text' => $title], 1);
   }else{
-    createQuestion('question', ['surveyID' => '1', 'text' => $title], 0);
+    createQuestion('question', ['surveyID' => $survey, 'text' => $title], 0);
   }
 }
 

@@ -14,4 +14,18 @@
 		$isInsert = $db -> insert($table, $data);
 		return $isInsert;
 	}
+
+	function createSurvey($table,$data){
+		$name = $data['name'];
+		$isInsert = "";
+		$db = Database::getInstance("localhost","kahoot","root","");
+		$existe = $db -> select("SELECT * FROM " . $table . " where name = '" . $name."'",["name"]);
+		if(count($existe) == 0 ){
+			$isInsert = $db -> insert($table, $data);
+		}
+
+		$survey = $db -> $existe = $db -> select("SELECT * FROM " . $table . " where name = '" . $name."'",["id"])[0]['id'];
+
+		return $survey;
+	}
  ?>
