@@ -2,10 +2,10 @@
 
 include "../controller/createController.php";
 
-if(isset($_POST)){
-	$title = $_POST['title'];
-	createQuestion('question', ['surveyID' => '1', 'text' => $title]);
-}
+// if(isset($_POST)){
+// 	$title = $_POST['title'];
+// 	createQuestion('question', ['surveyID' => '1', 'text' => $title]);
+// }
 
  ?>
 <!DOCTYPE html>
@@ -23,7 +23,6 @@ if(isset($_POST)){
           <div class="card mt-4">
 						<div class="card-body">
 							<form action="create.php" method="post">
-
 							</form>
 						</div>
           </div>
