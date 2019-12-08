@@ -52,5 +52,36 @@
 				return $array;
 
     	}
-	}
+
+    public function insert($table, $data = []){
+        try {
+
+            $columnsArray = array_keys($data);
+            $columnsString = implode(',', $columnsArray);
+
+            $valuesArray = array_values($data);
+            $valuesCount = count($valuesArray);
+
+            $valuesPlaceholder = '';
+            for ($i=0; $i < $valuesCount; $i++) { 
+                $valuesPlaceholder .= '?,';
+            }
+            $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
+
+
+            $query = "INSERT INTO $table ($columnsString) VALUES ($valuesPlaceholder)";
+
+            $statement = $this -> pdo -> prepare($query);
+
+            if($statement->execute($valuesArray)){
+            	return True;
+            }else{
+            	return False;
+            }
+
+        } catch (\PDOException $e) {
+            die("Insert failed: " . $e->getMessage());
+        }
+	 }
+}
  ?>

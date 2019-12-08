@@ -1,6 +1,6 @@
 <?php
 	include "../model/Database.php";
-	$pdo = Database::getInstance("localhost","Kahoot","root","P@ssw0rd")-> getPDO();
+	$pdo = Database::getInstance("localhost","Kahoot","root","")-> getPDO();
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
