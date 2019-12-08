@@ -43,9 +43,11 @@
                         '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button">' .
                         '<i class="fas fa-edit"></i>' .
                         '</a>' .
-                        '<button type="button" class="btn btn-success float-right" name="button">' .
-                        '<i class="fas fa-play"></i>' .
-                        '</button>' .
+                        '<form action="play.php" method="post">' .
+                        '<input type="hidden" name="surveyId" value="'.$surveis[$i]['id'].'" />' .
+                        '<input type="submit" class="btn btn-success float-right" value="Jugar">' .
+                        '</input>' .
+                        '</form>' .
                         '</td>' .
                         '</tr>';
                       }
