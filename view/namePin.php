@@ -1,6 +1,9 @@
 <?php
+	// PON SESSION START JODER
+	session_start();
 	include "../model/Database.php";
 	$pdo = Database::getInstance("localhost","Kahoot","root","")-> getPDO();
+
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">

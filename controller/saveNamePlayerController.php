@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST['buttonAnnoymous'])){
 		$data = [
-	    'roomID' => '7',
+	    'roomID' => $_SESSION['roomID'],
 	    'name' => $_POST['name']
 		];
 		$sql = "INSERT INTO player (roomID, name) VALUES (:roomID, :name);";
