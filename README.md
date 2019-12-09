@@ -1,5 +1,5 @@
 # Kahoot
-***
+
 #### Installación
 1. Importart base de datos de la carpeta resources como Kahoot
 2. Crear usuario con todos los permisos con nombre kahoot y contraseña P@ssw0rd
