@@ -1,44 +1,30 @@
 <?php
-	session_start();
-	include "../model/Database.php";
-	include "../controller/PincodeController.php";
-
-	if(isset($_POST['surveyId'])){
-		$surveyId = $_POST['surveyId'];
-		$_SESSION['pin'] = generateCodePin($surveyId);
-		createRoom($_POST['surveyId'], $_SESSION['pin']);
-	}
-
-	$players = getPlayers($_SESSION['pin']);
+	include "../model/Database1.php";
+	$pdo = Database::getInstance("localhost","kahoot","kahoot","P@ssw0rd")-> getPDO();
 ?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">	
 		<?php
 			include 'layouts/links.php';
 		?>
-		<meta http-equiv="refresh" content="15">
+		<meta http-equiv="refresh" content="5" > 
 	</head>
-	<body>
+	<body class="colorBackground">
 		<main class="container-fluid">
 			<div class="anonym">
 				<div class="card anonym__card">
 					<div class="card-body anonym__body">
-						<h3 class="text-center mb-5">PIN CODE: <br /><?php echo $_SESSION['pin'] ?></h5>
-						<div class="row">
-							<?php
-
-								for ($i=0; $i < count($players); $i++) {
-									echo '<div class="col-4 text-center" style="text-transform: uppercase">' . $players[$i]['name'] . '</div>';
-								}
-
-							?>
-						</div>
+						
+						<?php include '../controller/playController.php'; ?>
+		
 					</div>
 				</div>
 			</div>
 		</main>
+		
 	</body>
 </html>
