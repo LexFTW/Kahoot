@@ -6,7 +6,6 @@
 		private $table;
 		private $user;
 		private $pass;
-
 		private function __construct($host, $table, $user, $pass){
 			$this -> host = $host;
 			$this -> table = $table;
@@ -20,7 +19,6 @@
         	}
         	return self::$instance;
     	}
-
     	private function connection(){
 				try{
 				    return new PDO("mysql:host=".$this -> host.";dbname=".$this -> table.";", $this-> user, $this->pass);
@@ -28,16 +26,13 @@
 				    echo '[ERROR] - ' . $e->getMessage();
 				 }
     	}
-
     	public function getPDO(){
     		return $this -> pdo;
     	}
-
     	public function select($query, $columns){
 				$array = array();
     		$query = $this->pdo->prepare($query);
     		$query->execute();
-
 				$register = $query->fetch();
 				$i = 0;
 				while($register){
@@ -48,36 +43,33 @@
 					array_push($array, $sub_array);
 					$register = $query->fetch();
 				}
-
 				return $array;
     	}
 
-    public function insert($table, $data = []){
-        try {
+		public function insert($table, $columns, $data){
+			$query = 'INSERT INTO '. $table .' '.$columns[0].' VALUES '.$columns[1].' ;';
+			$stm= $pdo->prepare($query);
+			$stm->execute($data);
+		}
 
+    public function insertOld($table, $data = []){
+        try {
             $columnsArray = array_keys($data);
             $columnsString = implode(',', $columnsArray);
-
             $valuesArray = array_values($data);
             $valuesCount = count($valuesArray);
-
             $valuesPlaceholder = '';
             for ($i=0; $i < $valuesCount; $i++) {
                 $valuesPlaceholder .= '?,';
             }
             $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
-
-
             $query = "INSERT INTO $table ($columnsString) VALUES ($valuesPlaceholder)";
-
             $statement = $this -> pdo -> prepare($query);
-
             if($statement->execute($valuesArray)){
             	return $this -> pdo -> lastInsertId();
             }else{
             	return False;
             }
-
         } catch (\PDOException $e) {
             die("Insert failed: " . $e->getMessage());
         }
