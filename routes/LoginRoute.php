@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $authController = new AuthController;
           $login = $authController->login($_POST['email'], $_POST['password']);
 
-          if(isset($login)){
+          print_r($login);
+
+          if($login != NULL){
             $_SESSION['auth'] = $login;
             header('Location: dashboard.php');
             die();

@@ -13,12 +13,12 @@ class AuthController{
           'password' => $password
         ];
 
-        $login = $database->select("SELECT * FROM `user` where email=:email and password=SHA2(:password, 512);", $data);
+        $login = $database->select("SELECT * FROM `users` where email=:email and password=SHA2(:password, 512);", $data);
 
-        if(isset($login)){
+        if(!empty($login)){
           $auth = new Auth;
-          $auth->setId($login[0]['id']);
-          $auth->setName($login[0]['name']);
+          $auth->setId($login[0]['id_user']);
+          $auth->setName($login[0]['firstname'] . ' ' . $login[0]['lastname']);
           $auth->setEmail($login[0]['email']);
 
           return $auth;

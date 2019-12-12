@@ -1,6 +1,7 @@
 <?php
 
-include '../controllers/PullController.php';
+include '../controllers/PollController.php';
+include '../models/Auth.php';
 
 session_start();
 
@@ -10,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET'){
     die();
   }
 
-  $pull = new PullController;
-  $pulls = $pull->getPulls();
+  $poll = new PollController;
+  $polls = $poll->getPolls($_SESSION['auth']->getId());
 
 }
 

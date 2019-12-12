@@ -55,13 +55,13 @@ body.animation {
   border-bottom: 0;
 }
 
-.login__input-group{
+.login__input-group, .poll__input-group{
   background: white;
   border: 0;
   border-radius: 0;
 }
 
-.login__input-form-control{
+.login__input-form-control, .poll__input-form-control{
   border-radius: 0;
   border: 0;
 }
@@ -173,6 +173,41 @@ body.animation {
 
 .dashboard_main_card{
   background: transparent; border: 0
+}
+
+.poll__group-title{
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 5px 5px 0px #ddd;
+}
+
+.poll__card_answer{
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.poll__input-group-title, .poll__input-form-control-title{
+  font-size: 2em;
+}
+
+.poll__answer-editable{
+  font-weight: bold;
+}
+
+.poll__answer-editable::placeholder{
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.poll__answer-editable:-ms-input-placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.poll__answer-editable::-ms-input-placeholder{
+  color: white;
+  opacity: 1; /* Firefox */
 }
 
 

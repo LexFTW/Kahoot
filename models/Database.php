@@ -15,7 +15,7 @@
 		}
  	 	public static function getInstance(){
         	if (!self::$instance instanceof self) {
-            	self::$instance = new self('localhost', 'Kahoot', 'kahoot', 'kahoot');
+            	self::$instance = new self('localhost', 'kahoot', 'root', '');
         	}
         	return self::$instance;
     	}

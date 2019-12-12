@@ -2,11 +2,14 @@
 
 include '../models/Database.php';
 
-class PullController{
+class PollController{
 
-  public function getPulls(){
+  public function getPolls($id_user){
     $database = Database::getInstance();
-    return $database->select('SELECT * FROM survey', NULL);
+    $data = [
+      'id_user' => $id_user
+    ];
+    return $database->select('SELECT * FROM polls WHERE id_user = :id_user', $data);
   }
 
   public function createQuestion($table, $data, $answer){
@@ -25,14 +28,11 @@ class PullController{
   public function create($name){
     $database = Database::getInstance();
     $data = [
-      'userID' => '1',
-      'name' => $name
+      'id_user' => '1',
+      'name_poll' => $name
     ];
 
-    $database->insert('survey', ['(userID, name)', '(:userID, :name)'], $data);
-
-
-
+    return $database->insert('INSERT INTO polls (id_user, name_poll) VALUES (:id_user, :name_poll)', $data);
   }
 
 }
