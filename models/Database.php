@@ -29,50 +29,63 @@
     	public function getPDO(){
     		return $this -> pdo;
     	}
-    	public function select($query, $columns){
-				$array = array();
-    		$query = $this->pdo->prepare($query);
-    		$query->execute();
-				$register = $query->fetch();
-				$i = 0;
-				while($register){
-					$sub_array = array();
-					for ($j=0; $j < count($columns); $j++) {
-						$sub_array[$columns[$j]] = $register[$columns[$j]];
-					}
-					array_push($array, $sub_array);
-					$register = $query->fetch();
-				}
-				return $array;
-    	}
 
-		public function insert($table, $columns, $data){
-			$query = 'INSERT INTO '. $table .' '.$columns[0].' VALUES '.$columns[1].' ;';
-			$stm= $pdo->prepare($query);
-			$stm->execute($data);
+			public function select($query, $data){
+				$stm = $this -> pdo->prepare($query);
+				$stm->execute($data);
+				$data = $stm->fetchAll();
+				return $data;
+			}
+
+    	// public function selectOld($query, $columns){
+			// 	$array = array();
+    	// 	$query = $this->pdo->prepare($query);
+    	// 	$query->execute();
+			// 	$register = $query->fetch();
+			// 	$i = 0;
+			// 	while($register){
+			// 		$sub_array = array();
+			// 		for ($j=0; $j < count($columns); $j++) {
+			// 			$sub_array[$columns[$j]] = $register[$columns[$j]];
+			// 		}
+			// 		array_push($array, $sub_array);
+			// 		$register = $query->fetch();
+			// 	}
+			// 	return $array;
+    	// }
+
+		public function insert($query, $data){
+			try {
+				$stm = $this -> pdo->prepare($query);
+				$insert = $stm->execute($data);
+				return $insert;
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+
 		}
 
-    public function insertOld($table, $data = []){
-        try {
-            $columnsArray = array_keys($data);
-            $columnsString = implode(',', $columnsArray);
-            $valuesArray = array_values($data);
-            $valuesCount = count($valuesArray);
-            $valuesPlaceholder = '';
-            for ($i=0; $i < $valuesCount; $i++) {
-                $valuesPlaceholder .= '?,';
-            }
-            $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
-            $query = "INSERT INTO $table ($columnsString) VALUES ($valuesPlaceholder)";
-            $statement = $this -> pdo -> prepare($query);
-            if($statement->execute($valuesArray)){
-            	return $this -> pdo -> lastInsertId();
-            }else{
-            	return False;
-            }
-        } catch (\PDOException $e) {
-            die("Insert failed: " . $e->getMessage());
-        }
-	 }
+   //  public function insertOld($table, $data = []){
+   //      try {
+   //          $columnsArray = array_keys($data);
+   //          $columnsString = implode(',', $columnsArray);
+   //          $valuesArray = array_values($data);
+   //          $valuesCount = count($valuesArray);
+   //          $valuesPlaceholder = '';
+   //          for ($i=0; $i < $valuesCount; $i++) {
+   //              $valuesPlaceholder .= '?,';
+   //          }
+   //          $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
+   //          $query = "INSERT INTO $table ($columnsString) VALUES ($valuesPlaceholder)";
+   //          $statement = $this -> pdo -> prepare($query);
+   //          if($statement->execute($valuesArray)){
+   //          	return $this -> pdo -> lastInsertId();
+   //          }else{
+   //          	return False;
+   //          }
+   //      } catch (\PDOException $e) {
+   //          die("Insert failed: " . $e->getMessage());
+   //      }
+	 // }
 }
  ?>

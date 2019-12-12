@@ -12,32 +12,34 @@ class RoomController{
         'pin' => $pin,
         'status' => 'playing'
       ];
-      $database->insert('room', ['(surveyID, userID, pin, status)', '(:surveyID, :userID, :pin, :status)'], $data)
+      $database->insert('room', ['(surveyID, userID, pin, status)', '(:surveyID, :userID, :pin, :status)'], $data);
     }
 
     public function createAnonym($name){
-      $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
-
+      $database = Database::getInstance('localhost', 'kahoot', 'alexis', '1234');
       $data = [
         'pin' => $_SESSION['pin']
       ];
-      
-      $database->select('room', ['pin=:pin'], $data);
-
-      $query = "SELECT id FROM `player` where roomID=:roomID and name=:name ;"
-      $stm2 = $pdo->prepare($query);
-  		$stm2->execute($data);
-
-      $isInsert = $database -> insert('room', ['(roomID, name)', '(:roomID, :name)'], $data);
+      $room = $database->select('SELECT * FROM room WHERE pin = :pin;', $data)[0]['id'];
+      $data = [
+        'roomID' => $room,
+        'name' => $name
+      ];
+      return $database->insert('INSERT INTO player (roomID, name) VALUES (:roomID, :name);', $data);
     }
 
     function getPlayers($pin){
-      $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
-      $query = 'SELECT * FROM room WHERE pin = '.$pin.'';
-      $idRoom = $database->select($query, ['id'])[0]['id'];
+      $database = Database::getInstance('localhost', 'kahoot', 'alexis', '1234');
+      $data = [
+        'pin' => $_SESSION['pin']
+      ];
+      $room = $database->select('SELECT * FROM room WHERE pin = :pin;', $data)[0]['id'];
 
-      $query = 'SELECT * FROM player WHERE roomID = '.$idRoom.'';
-      return $database->select($query, ['name']);
+      $data = [
+        'roomID' => $room
+      ];
+
+      return $database->select('SELECT * FROM player WHERE roomID = :roomID', $data);
     }
 }
 

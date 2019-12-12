@@ -95,6 +95,29 @@ body.animation {
   text-transform: uppercase;
 }
 
+.lobby__card{
+  margin: 100px auto;
+  border: 0;
+  background: transparent;
+}
+
+.lobby__title, .lobby__players{
+  padding: 15px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.lobby__players{
+  text-transform: uppercase;
+}
+
+.lobby__button{
+  padding: 15px;
+  font-size: 4em;
+  margin-bottom: 10px;
+}
+
 .dashboard__container{
   padding: 0;
 }

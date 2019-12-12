@@ -7,8 +7,13 @@ class AuthController{
 
     function login($email, $password){
       try{
-        $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
-        $login = $database->select("select * from user where email = '". $email . "' and password = SHA2('" .$password."',512);", ['id', 'name', 'email']);
+        $database = Database::getInstance('localhost', 'kahoot', 'alexis', '1234');
+        $data = [
+          'email' => $email,
+          'password' => $password
+        ];
+
+        $login = $database->select("SELECT * FROM `user` where email=:email and password=SHA2(:password, 512);", $data);
 
         if(isset($login)){
           $auth = new Auth;

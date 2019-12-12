@@ -14,7 +14,7 @@
 						<div class="card-body">
 							<div class="row">
                 <div class="col-md-6 mb-4">
-                  <b>Kahoots ()</b>
+                  <b>Kahoots (<?php echo $_SESSION['auth'] ?>)</b>
                 </div>
                 <div class="col-md-6 mb-4">
                   <form action="create.php" method="post">

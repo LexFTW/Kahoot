@@ -5,8 +5,11 @@ include '../models/Database.php';
 class PinCodeController{
 
   public function pin($pin){
-    $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
-    $pin = $database->select('SELECT * FROM room WHERE pin = "' . $pin . '";', ['pin']);
+    $database = Database::getInstance('localhost', 'kahoot', 'alexis', '1234');
+    $data = [
+      'pin' => $pin
+    ];
+    $pin = $database->select('SELECT * FROM room WHERE pin=:pin;', $data);
 
     return count($pin);
   }
