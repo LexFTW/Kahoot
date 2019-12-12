@@ -32,7 +32,11 @@
 
 			public function select($query, $data){
 				$stm = $this -> pdo->prepare($query);
-				$stm->execute($data);
+				if($data === NULL){
+					$stm->execute();
+				}else{
+					$stm->execute($data);
+				}
 				$data = $stm->fetchAll();
 				return $data;
 			}

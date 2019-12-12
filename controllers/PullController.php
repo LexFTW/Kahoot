@@ -4,6 +4,11 @@ include '../models/Database.php';
 
 class PullController{
 
+  public function getPulls(){
+    $database = Database::getInstance("localhost","kahoot","alexis","1234");
+    return $database->select('SELECT * FROM survey', NULL);
+  }
+
   public function createQuestion($table, $data, $answer){
     $db = Database::getInstance("localhost","kahoot","root","");
     $isInsert = $db -> insert($table,$data);
