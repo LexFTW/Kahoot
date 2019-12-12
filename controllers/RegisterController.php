@@ -7,7 +7,7 @@ class RegisterController{
 
     function register(Register $register){
       try{
-        $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
+        $database = Database::getInstance();
 
       }catch(Exception $e){
         echo $e->getMessage();

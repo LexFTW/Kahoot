@@ -5,7 +5,7 @@ include '../models/Database.php';
 class RoomController{
 
     public function createRoom($id, $pin){
-      $database = Database::getInstance('localhost', 'Kahoot', 'root', '');
+      $database = Database::getInstance();
       $data = [
         'surveyID' => $id,
         'userID' => '1',
@@ -16,7 +16,7 @@ class RoomController{
     }
 
     public function createAnonym($name){
-      $database = Database::getInstance('localhost', 'Kahoot', 'rogeraws', 'P@ssw0rd');
+      $database = Database::getInstance();
       $data = [
         'pin' => $_SESSION['pin']
       ];
@@ -29,7 +29,7 @@ class RoomController{
     }
 
     function getPlayers($pin){
-      $database = Database::getInstance('localhost', 'Kahoot', 'rogeraws', 'P@ssw0rd');
+      $database = Database::getInstance();
       $data = [
         'pin' => $_SESSION['pin']
       ];

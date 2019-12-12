@@ -13,9 +13,9 @@
 			$this -> pass = $pass;
     	$this -> pdo =  $this->connection();
 		}
- 	 	public static function getInstance($host, $table, $user, $pass){
+ 	 	public static function getInstance(){
         	if (!self::$instance instanceof self) {
-            	self::$instance = new self($host, $table, $user, $pass);
+            	self::$instance = new self('localhost', 'Kahoot', 'kahoot', 'kahoot');
         	}
         	return self::$instance;
     	}

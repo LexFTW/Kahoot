@@ -5,7 +5,7 @@ include '../models/Database.php';
 class PinCodeController{
 
   public function pin($pin){
-    $database = Database::getInstance('localhost', 'Kahoot', 'rogeraws', 'P@ssw0rd');
+    $database = Database::getInstance();
     $data = [
       'pin' => $pin
     ];
