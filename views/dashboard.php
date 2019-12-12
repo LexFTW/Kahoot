@@ -17,9 +17,7 @@
                   <b>Kahoots (<?php echo count($pulls) ?>)</b>
                 </div>
                 <div class="col-md-6 mb-4">
-                  <form action="create.php" method="post">
-                    <input type="submit" class="btn btn-warning float-right" value="Crear">
-                  </form>
+                  <a href="create_pull.php" class="btn btn-warning float-right">Crear</a>
                 </div>
               </div>
 							<div class="card">
