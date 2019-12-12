@@ -22,18 +22,17 @@ class PullController{
     return $isInsert;
   }
 
-  public function createSurvey($table,$data){
-    $name = $data['name'];
-    $isInsert = "";
-    $db = Database::getInstance("localhost","kahoot","root","");
-    $existe = $db -> select("SELECT * FROM " . $table . " where name = '" . $name."'",["name"]);
-    if(count($existe) == 0 ){
-      $isInsert = $db -> insert($table, $data);
-    }
+  public function create($name){
+    $database = Database::getInstance("localhost","kahoot","root","");
+    $data = [
+      'userID' => '1',
+      'name' => $name
+    ];
 
-    $survey = $db -> $existe = $db -> select("SELECT * FROM " . $table . " where name = '" . $name."'",["id"])[0]['id'];
+    $database->insert('survey', ['(userID, name)', '(:userID, :name)'], $data);
 
-    return $survey;
+
+
   }
 
 }

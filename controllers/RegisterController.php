@@ -15,7 +15,6 @@ class RegisterController{
 
       return NULL;
     }
-
 }
 
  ?>

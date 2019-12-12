@@ -13,19 +13,15 @@ include '../routes/CreatePullRoute.php';
          <div class="card">
            <div class="card-body">
              <form method="post">
-               <input list="pulls" name="pulls" class="form-control" placeholder="Selecciona el Kahoot">
+               <input list="pulls" name="pulls" class="form-control" placeholder="Selecciona el Kahoot" autocomplete="false">
                <datalist id="pulls">
                  <?php
-
                     foreach ($pulls as $pull) {
-                      echo '<option data-value="'.$pull['id'].'">' . $pull['name'] . '</option>';
+                      echo '<option data-value="'.$pull['id'].'" value="'. $pull['name'].'"/>';
                     }
-
                   ?>
               </datalist>
-             </form>
-             <hr />
-             <form method="post">
+              <hr />
               <input type="text" name="new_pull" placeholder="Crear nuevo Kahoot" class="form-control">
               <input type="submit" class="btn btn-primary float-right mt-2" value="Crear">
              </form>
