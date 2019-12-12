@@ -5,7 +5,7 @@ include '../models/Database.php';
 class PullController{
 
   public function getPulls(){
-    $database = Database::getInstance("localhost","kahoot","alexis","1234");
+    $database = Database::getInstance('localhost', 'Kahoot', 'rogeraws', 'P@ssw0rd');
     return $database->select('SELECT * FROM survey', NULL);
   }
 

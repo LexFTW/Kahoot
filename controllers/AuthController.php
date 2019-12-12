@@ -7,7 +7,7 @@ class AuthController{
 
     function login($email, $password){
       try{
-        $database = Database::getInstance('localhost', 'kahoot', 'alexis', '1234');
+        $database = Database::getInstance('localhost', 'Kahoot', 'rogeraws', 'P@ssw0rd');
         $data = [
           'email' => $email,
           'password' => $password

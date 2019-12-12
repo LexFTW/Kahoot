@@ -83,7 +83,6 @@ class Auth{
 
         return $this;
     }
-
 }
 
 

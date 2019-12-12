@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $login = $authController->login($_POST['email'], $_POST['password']);
 
           if(isset($login)){
-            $_SESSION['auth'] = $login->getName();
+            $_SESSION['auth'] = $login;
             header('Location: dashboard.php');
             die();
           }else{
