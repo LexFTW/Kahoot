@@ -34,14 +34,24 @@ body.animation {
   animation-iteration-count: infinite;
 }
 
+.alert{
+  display: none;
+  border-radius: 0;
+  animation: fadeIn;
+  -webkit-animation: fadeIn; /* Chrome and Safari */
+  animation-duration: 1s;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+.alert-danger{
+  box-shadow: 0 0 5px 0 darkred;
+}
+
 .row{
   margin-right: 0;
   margin-left: 0;
-}
-
-.login__alert{
-  border-radius: 0;
-  display: none;
 }
 
 .login__card{
@@ -228,6 +238,11 @@ body.animation {
 85.68% { background-color: aqua; }
 92.82% { background-color: teal; }
 100% {background-color:maroon;}
+}
+
+@keyframes fadeIn{
+  0% {top:-50px;}
+  100%{top:0px;}
 }
 
 @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */

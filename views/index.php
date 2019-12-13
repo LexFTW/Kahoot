@@ -6,6 +6,9 @@ include '../routes/PinCodeRoute.php';
 ?>
 
 <body class="animation">
+  <div class="alert alert-danger d-block mx-auto" role="alert">
+    <i class="fas fa-times mr-3"></i> El pin introducido es incorrecto.
+  </div>
   <main class="container-fluid">
     <div class="anonym">
       <div class="card anonym__card">
@@ -15,9 +18,6 @@ include '../routes/PinCodeRoute.php';
           <input class="form-control col-4 mt-4 col-xs-12 mx-auto anonym__input" type="number" name="pin" placeholder="Introducir PIN">
           <button class="btn btn-primary col-4 mt-2 col-xs-12 mx-auto btn-block anonym__button" type="submit" name="buttonPin">Entrar</button>
           </form>
-        </div>
-        <div class="alert alert-danger col-4 d-block mx-auto login__alert" role="alert">
-          El pin introducido es incorrecto.
         </div>
       </div>
     </div>

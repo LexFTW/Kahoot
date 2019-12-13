@@ -6,6 +6,9 @@ include 'layouts/head.php';
  ?>
 
  <body class="animation">
+  <div class="alert alert-danger" role="alert">
+    <i class="fas fa-times mr-3"></i>El usuario y/o la contraseña son incorrectos.
+  </div>
  	<main class="container-fluid">
  		<div class="row justify-content-center">
       <div class="col-md-8">
@@ -41,9 +44,6 @@ include 'layouts/head.php';
             </form>
             <hr />
             <a role="button" class="btn btn-primary login__button-submit" href="register.php">Registrate</a>
-          </div>
-          <div class="alert alert-danger login__alert" role="alert">
-            El usuario y/o la contraseña son incorrectos.
           </div>
         </div>
       </div>
