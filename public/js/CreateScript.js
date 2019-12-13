@@ -10,6 +10,7 @@ function generateTrueOrFalseQuestion(){
   var main = document.getElementById('question__main');
   main.innerHTML =
   '<form method="post"> ' +
+    '<input type="hidden" name="type_question" value="1" />' +
     '<div class="row">' +
       '<div class="form-group col-12">' +
         '<div class="input-group mb-3 poll__group-title">' +
@@ -18,7 +19,7 @@ function generateTrueOrFalseQuestion(){
               '<i class="fas fa-question"></i>' +
             '</span>' +
           '</div>' +
-          '<input type="text" name="question" class="form-control poll__input-form-control poll__input-form-control-title" placeholder="Título de la Pregunta" aria-label="Título de la Pregunta" aria-describedby="question-addon">' +
+          '<input type="text" name="title_question" class="form-control poll__input-form-control poll__input-form-control-title" placeholder="Título de la Pregunta" aria-label="Título de la Pregunta" aria-describedby="question-addon">' +
         '</div>' +
       '</div>' +
       '<div class="form-group col-9">' +
@@ -38,8 +39,8 @@ function generateTrueOrFalseQuestion(){
         '<div class="card rounded-lg poll__card_answer">' +
           '<div class="card-body bg-success rounded-lg">' +
             '<div class="custom-control custom-radio">' +
-              '<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">' +
-              '<label class="custom-control-label" for="customRadio1">Verdadero</label>' +
+              '<input type="radio" id="true_answer" name="true_answer" class="custom-control-input" checked>' +
+              '<label class="custom-control-label" for="true_answer">Verdadero</label>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -48,8 +49,8 @@ function generateTrueOrFalseQuestion(){
         '<div class="card rounded-lg poll__card_answer">' +
           '<div class="card-body bg-danger rounded-lg">' +
             '<div class="custom-control custom-radio">' +
-              '<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">' +
-              '<label class="custom-control-label" for="customRadio2">Falso</label>' +
+              '<input type="radio" id="false_answer" name="false_answer" class="custom-control-input">' +
+              '<label class="custom-control-label" for="false_answer">Falso</label>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -64,7 +65,7 @@ function generateTrueOrFalseQuestion(){
 function generateMultiChoiceQuestion(){
   var main = document.getElementById('question__main');
   main.innerHTML =
-  '<form method="post"> ' +
+  '<form action="createQuestion()" method="post"> ' +
     '<div class="row">' +
       '<div class="form-group col-12">' +
         '<div class="input-group mb-3 poll__group-title">' +

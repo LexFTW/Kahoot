@@ -6,30 +6,33 @@ include '../routes/CreatePollRoute.php';
  ?>
  <script src="../public/js/CreateScript.js" charset="utf-8"></script>
  <body>
+   <div class="alert alert-danger" role="alert">
+     <i class="fas fa-times mr-3"></i>
+     <i class="fas fa-times text-secondary float-right mr-3" onclick="document.getElementsByClassName('alert')[0].style.display = 'none'"></i>
+   </div>
+   <div class="alert alert-success" role="alert">
+     <i class="fas fa-check mr-3"></i>
+     <i class="fas fa-times text-secondary float-right mr-3" onclick="document.getElementsByClassName('alert')[1].style.display = 'none'"></i>
+   </div>
    <?php include 'layouts/nav.php' ?>
    <main class="container-fluid">
      <div class="row mt-4">
        <div class="col-md-3">
          <div class="card">
            <div class="card-body">
-             <!-- <form method="post">
-               <input list="polls" name="polls" class="form-control" placeholder="Selecciona el Kahoot" autocomplete="false">
-               <datalist id="polls">
-                 <?php
-                    foreach ($polls as $poll) {
-                      echo '<option data-value="'.$poll['id'].'" value="'. $poll['name'].'"/>';
-                    }
-                  ?>
-              </datalist>
-              <hr />
-              <input type="text" name="new_poll" placeholder="Crear nuevo Kahoot" class="form-control">
-              <input type="submit" class="btn btn-primary float-right mt-2" value="Crear">
-             </form> -->
              <select class="form-control" onchange="generateFormQuestion(this.value)">
                <option disabled selected>Selecciona el tipo de Pregunta</option>
                <option value="1">Verdadero / Falso</option>
                <option value="2">Única Respuesta</option>
              </select>
+             <hr />
+             <?php
+
+             foreach ($questions as $question) {
+               echo '<a href="#" class="badge badge-primary d-block mb-2 pb-2 pt-2">Pregunta '.$question['id_question'].': '.$question['title_question'].'</a>';
+             }
+
+            ?>
            </div>
          </div>
        </div>
