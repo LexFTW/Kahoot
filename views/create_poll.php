@@ -1,10 +1,9 @@
 <?php
 
 include 'layouts/head.php';
-include '../routes/CreatePollRoute.php';
+include '../routes/PollRoute.php';
 
  ?>
- <script src="../public/js/CreateScript.js" charset="utf-8"></script>
  <body>
    <div class="alert alert-danger" role="alert">
      <i class="fas fa-times mr-3"></i>
@@ -17,29 +16,26 @@ include '../routes/CreatePollRoute.php';
    <?php include 'layouts/nav.php' ?>
    <main class="container-fluid">
      <div class="row mt-4">
-       <div class="col-md-3">
+       <div class="col-md-12">
          <div class="card">
            <div class="card-body">
-             <select class="form-control" onchange="generateFormQuestion(this.value)">
-               <option disabled selected>Selecciona el tipo de Pregunta</option>
-               <option value="1">Verdadero / Falso</option>
-               <option value="2">Única Respuesta</option>
-             </select>
-             <hr />
-             <?php
-
-             foreach ($questions as $question) {
-               echo '<a href="#" class="badge badge-primary d-block mb-2 pb-2 pt-2">Pregunta '.$question['id_question'].': '.$question['title_question'].'</a>';
-             }
-
-            ?>
-           </div>
-         </div>
-       </div>
-       <div class="col-md-9">
-         <div class="card bg-transparent border-0">
-           <div class="card-body" id="question__main">
-
+             <table class="table table-striped table-responsive-sm">
+               <tbody>
+                 <?php
+                 foreach ($polls as $poll) {
+                   echo '<tr>' .
+                   '<td class="align-middle">'.$poll['name_poll'].'</td>' .
+                   '<td class="align-middle">' .
+                   '<form method="post">' .
+                   '<input type="hidden" name="id_poll" value="'.$poll['id_poll'].'" />' .
+                   '<input type="submit" value="Seleccionar" class="btn btn-primary float-right" />' .
+                   '</form>' .
+                   '</td>' .
+                   '</tr>';
+                 }
+                ?>
+               </tbody>
+             </table>
            </div>
          </div>
        </div>

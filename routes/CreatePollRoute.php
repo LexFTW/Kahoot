@@ -6,7 +6,7 @@
   session_start();
 
   $poll = new PollController;
-  $questions = $poll->getQuestions(1);
+  $questions = $poll->getQuestions($_SESSION['id_poll']);
 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
     createQuestion();
