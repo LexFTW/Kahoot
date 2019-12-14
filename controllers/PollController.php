@@ -33,12 +33,8 @@ class PollController{
     return $isInsert;
   }
 
-  public function create($name){
+  public function create($data){
     $database = Database::getInstance();
-    $data = [
-      'id_user' => '1',
-      'name_poll' => $name
-    ];
 
     return $database->insert('INSERT INTO polls (id_user, name_poll) VALUES (:id_user, :name_poll)', $data);
   }

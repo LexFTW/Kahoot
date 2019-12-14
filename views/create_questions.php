@@ -4,7 +4,7 @@ include 'layouts/head.php';
 include '../routes/CreatePollRoute.php';
 
  ?>
- <script src="../public/js/CreateScript.js" charset="utf-8"></script>
+ <script src="../public/js/QuestionScript.js" charset="utf-8"></script>
  <body>
    <div class="alert alert-danger" role="alert">
      <i class="fas fa-times mr-3"></i>

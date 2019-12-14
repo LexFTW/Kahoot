@@ -35,7 +35,7 @@
       $isInsert = $poll->createQuestion($data);
       if($isInsert == 1){
         showMessageSuccess('Se ha creado la pregunta correctamente!');
-        $questions = $poll->getQuestions(1);
+        $questions = $poll->getQuestions($_SESSION['id_poll']);
       }
     }
   }

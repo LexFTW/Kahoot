@@ -5,6 +5,7 @@ include '../routes/PollRoute.php';
 
  ?>
  <body>
+   <script src="../public/js/PollScript.js" charset="utf-8"></script>
    <div class="alert alert-danger" role="alert">
      <i class="fas fa-times mr-3"></i>
      <i class="fas fa-times text-secondary float-right mr-3" onclick="document.getElementsByClassName('alert')[0].style.display = 'none'"></i>
@@ -36,6 +37,7 @@ include '../routes/PollRoute.php';
                 ?>
                </tbody>
              </table>
+             <button type="button" name="button" onclick="createPoll()" class="btn btn-primary float-right">Crear nuevo</button>
            </div>
          </div>
        </div>
