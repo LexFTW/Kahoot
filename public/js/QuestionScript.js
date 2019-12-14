@@ -39,7 +39,7 @@ function generateTrueOrFalseQuestion(){
         '<div class="card rounded-lg poll__card_answer">' +
           '<div class="card-body bg-success rounded-lg">' +
             '<div class="custom-control custom-radio">' +
-              '<input type="radio" id="true_answer" name="true_answer" class="custom-control-input" checked>' +
+              '<input type="radio" id="true_answer" value="Verdadero" name="answer" class="custom-control-input" checked>' +
               '<label class="custom-control-label" for="true_answer">Verdadero</label>' +
             '</div>' +
           '</div>' +
@@ -49,7 +49,7 @@ function generateTrueOrFalseQuestion(){
         '<div class="card rounded-lg poll__card_answer">' +
           '<div class="card-body bg-danger rounded-lg">' +
             '<div class="custom-control custom-radio">' +
-              '<input type="radio" id="false_answer" name="false_answer" class="custom-control-input">' +
+              '<input type="radio" id="false_answer" value="Falso" name="answer" class="custom-control-input">' +
               '<label class="custom-control-label" for="false_answer">Falso</label>' +
             '</div>' +
           '</div>' +

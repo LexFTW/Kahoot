@@ -7,6 +7,7 @@
 
   $poll = new PollController;
   $questions = $poll->getQuestions($_SESSION['id_poll']);
+  $name_poll = $poll->getPollName($_SESSION['id_poll'])[0]['name_poll'];
 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
     createQuestion();
@@ -26,7 +27,7 @@
     }else{
       $poll = new PollController;
       $data = [
-        'id_poll' => '1',
+        'id_poll' => $_SESSION['id_poll'],
         'id_user' => $_SESSION['auth']->getId(),
         'title_question' => $_POST['title_question'],
         'type_question' => $_POST['type_question']
@@ -34,8 +35,20 @@
 
       $isInsert = $poll->createQuestion($data);
       if($isInsert == 1){
-        showMessageSuccess('Se ha creado la pregunta correctamente!');
-        $questions = $poll->getQuestions($_SESSION['id_poll']);
+        $id_question = $poll->getLastPollId();
+
+        $data = [
+            'id_question' => $id_question,
+            'name_answer' => $_POST['answer'],
+            'correct' => 1
+        ];
+
+        $isInsert = $poll->createAnswer($data);
+
+        if($isInsert == 1){
+          showMessageSuccess('Se ha creado la pregunta correctamente! Actualizando...');
+          header("Refresh:5");
+        }
       }
     }
   }

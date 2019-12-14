@@ -6,6 +6,7 @@
 		private $table;
 		private $user;
 		private $pass;
+
 		private function __construct($host, $table, $user, $pass){
 			$this -> host = $host;
 			$this -> table = $table;
@@ -13,50 +14,36 @@
 			$this -> pass = $pass;
     	$this -> pdo =  $this->connection();
 		}
+
  	 	public static function getInstance(){
         	if (!self::$instance instanceof self) {
             	self::$instance = new self('localhost', 'kahoot', 'root', '');
         	}
         	return self::$instance;
     	}
-    	private function connection(){
-				try{
-				    return new PDO("mysql:host=".$this -> host.";dbname=".$this -> table.";", $this-> user, $this->pass);
-				 }catch(PDOException $e){
-				    echo '[ERROR] - ' . $e->getMessage();
-				 }
-    	}
-    	public function getPDO(){
-    		return $this -> pdo;
-    	}
 
-			public function select($query, $data){
-				$stm = $this -> pdo->prepare($query);
-				if($data === NULL){
-					$stm->execute();
-				}else{
-					$stm->execute($data);
-				}
-				$data = $stm->fetchAll();
-				return $data;
+		private function connection(){
+			try{
+			    return new PDO("mysql:host=".$this -> host.";dbname=".$this -> table.";", $this-> user, $this->pass);
+			 }catch(PDOException $e){
+			    echo '[ERROR] - ' . $e->getMessage();
+			 }
+    }
+
+		private function getPDO(){
+    	return $this -> pdo;
+    }
+
+		public function select($query, $data){
+			$stm = $this -> pdo->prepare($query);
+			if($data === NULL){
+				$stm->execute();
+			}else{
+				$stm->execute($data);
 			}
-
-    	// public function selectOld($query, $columns){
-			// 	$array = array();
-    	// 	$query = $this->pdo->prepare($query);
-    	// 	$query->execute();
-			// 	$register = $query->fetch();
-			// 	$i = 0;
-			// 	while($register){
-			// 		$sub_array = array();
-			// 		for ($j=0; $j < count($columns); $j++) {
-			// 			$sub_array[$columns[$j]] = $register[$columns[$j]];
-			// 		}
-			// 		array_push($array, $sub_array);
-			// 		$register = $query->fetch();
-			// 	}
-			// 	return $array;
-    	// }
+			$data = $stm->fetchAll();
+			return $data;
+		}
 
 		public function insert($query, $data){
 			try {
@@ -66,30 +53,11 @@
 			} catch (Exception $e) {
 				echo $e->getMessage();
 			}
-
 		}
 
-   //  public function insertOld($table, $data = []){
-   //      try {
-   //          $columnsArray = array_keys($data);
-   //          $columnsString = implode(',', $columnsArray);
-   //          $valuesArray = array_values($data);
-   //          $valuesCount = count($valuesArray);
-   //          $valuesPlaceholder = '';
-   //          for ($i=0; $i < $valuesCount; $i++) {
-   //              $valuesPlaceholder .= '?,';
-   //          }
-   //          $valuesPlaceholder = rtrim($valuesPlaceholder, ',');
-   //          $query = "INSERT INTO $table ($columnsString) VALUES ($valuesPlaceholder)";
-   //          $statement = $this -> pdo -> prepare($query);
-   //          if($statement->execute($valuesArray)){
-   //          	return $this -> pdo -> lastInsertId();
-   //          }else{
-   //          	return False;
-   //          }
-   //      } catch (\PDOException $e) {
-   //          die("Insert failed: " . $e->getMessage());
-   //      }
-	 // }
+		public function getLastId(){
+			return $this->pdo->lastInsertId();
+		}
+
 }
  ?>

@@ -20,6 +20,7 @@ include '../routes/CreatePollRoute.php';
        <div class="col-md-3">
          <div class="card">
            <div class="card-body">
+             <h2><?php echo $name_poll ?></h2>
              <select class="form-control" onchange="generateFormQuestion(this.value)">
                <option disabled selected>Selecciona el tipo de Pregunta</option>
                <option value="1">Verdadero / Falso</option>
