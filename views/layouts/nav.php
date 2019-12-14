@@ -9,7 +9,7 @@
             <?php echo $_SESSION['auth']->getName(); ?>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdown-menu-auth">
-            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="profile.php">Perfil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Cerrar Sesión</a>
           </div>

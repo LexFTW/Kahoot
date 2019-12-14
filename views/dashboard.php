@@ -4,6 +4,7 @@
   include '../routes/DashboardRoute.php';
 
  ?>
+  <script src="../public/js/PollScript.js" charset="utf-8"></script>
   <body>
     <?php include 'layouts/nav.php' ?>
     <main class="container-fluid dashboard__container">
@@ -17,24 +18,25 @@
                   <b>Kahoots (<?php echo count($polls) ?>)</b>
                 </div>
                 <div class="col-md-6 mb-4">
-                  <a href="create_poll.php" class="btn btn-warning float-right">Crear</a>
+                  <button type="button" name="button" onclick="createPoll()" class="btn btn-warning float-right">Crear Kahoot</button>
                 </div>
               </div>
 							<div class="card">
 								<table class="table table-responsive-sm">
 									<tbody>
                     <?php
-											for ($i=0; $i < count($polls); $i++) {
+                      foreach ($polls as $poll) {
                         echo '<tr>' .
-                        '<td class="align-middle">'.$polls[$i]['name_poll'].'</td>' .
+                        '<td class="align-middle">'.$poll['name_poll'].'</td>' .
                         '<td class="align-middle">' .
-                        '<a href="#" role="button" class="btn ml-2 btn-primary float-right" name="button">' .
-                        '<i class="fas fa-edit"></i>' .
-                        '</a>' .
-                        '<form action="lobbyAdmin.php" method="post">' .
-                        '<input type="hidden" name="surveyId" value="'.$polls[$i]['id_poll'].'" />' .
+                        '<form action="lobby_admin.php" method="post">' .
+                        '<input type="hidden" name="surveyId" value="'.$poll['id_poll'].'" />' .
                         '<input type="submit" class="btn btn-success float-right" value="Jugar">' .
                         '</input>' .
+                        '</form>' .
+                        '<form method="post">' .
+                        '<input type="hidden" name="id_poll" value="'.$poll['id_poll'].'" />' .
+                        '<input type="submit" value="Editar" class="btn btn-primary float-right mr-3" />' .
                         '</form>' .
                         '</td>' .
                         '</tr>';

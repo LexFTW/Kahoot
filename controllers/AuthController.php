@@ -30,6 +30,20 @@ class AuthController{
       return NULL;
     }
 
+    function changePassword($id_user, $password){
+      try{
+        $database = Database::getInstance();
+        $data = [
+          'password' => $password,
+          'id_user' => $id_user
+        ];
+
+        return $database->update('UPDATE users SET password = SHA2(:password, 512) WHERE id_user = :id_user', $data);
+      }catch(Exception $e){
+        echo $e->getMessage();
+      }
+    }
+
 }
 
  ?>
