@@ -44,7 +44,9 @@
         ];
 
         $isInsert = $poll->createAnswer($data);
-        uploadImage($id_question);
+        if(!empty($_POST['fileToUpload'])){
+          uploadImage($id_question);
+        }
         if($isInsert == 1){
           showMessageSuccess('Se ha creado la pregunta correctamente! Actualizando...');
 
@@ -76,15 +78,14 @@
 
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            // echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
-            echo "File is not an image.";
+            // echo "File is not an image.";
             $uploadOk = 0;
         }
 
       if ($uploadOk == 0) {
-          echo "Sorry, your file was not uploaded.";
       }else{
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $question = new PollController;
