@@ -17,7 +17,7 @@ include '../routes/LobbyRoute.php'
               echo '<button type="button" class="btn btn-light btn-lg d-block mx-auto lobby__button">
             <i class="fas fa-play"></i></button>';
             }else{
-              echo '<button role="button" class="btn btn-success btn-lg d-block mx-auto lobby__button"><i class="fas fa-play"></i></button>';
+              echo '<form method="POST"><input type="hidden" value="'.$_SESSION['pin'].'"/><input type="submit" class="btn btn-success btn-lg d-block mx-auto lobby__button" value="JUGAR"/></form>';
             }
            ?>
            <div class="row">

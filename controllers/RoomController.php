@@ -23,7 +23,7 @@ class RoomController{
       return $database->insert('INSERT INTO players (id_room, username) VALUES (:id_room, :username);', $data);
     }
 
-    function getPlayers($pin){
+    function getPlayers(){
       $database = Database::getInstance();
       $data = [
         'pin' => $_SESSION['pin']
@@ -44,6 +44,29 @@ class RoomController{
       }
 
       return $pin;
+    }
+
+    function getIdRoom(){
+      $database = Database::getInstance();
+      $data = [
+        'pin' => $_SESSION['pin']
+      ];
+      return $database->select('SELECT * FROM rooms WHERE pin = :pin;', $data)[0]['id_room'];
+    }
+
+    function updateStatusRoom($data){
+      $database = Database::getInstance();
+      return $database->update('UPDATE rooms SET status = 2 WHERE id_room = :id_room', $data);
+    }
+
+    function getStatusRoom($pin){
+      $database = Database::getInstance();
+      $id_room = $this->getIdRoom();
+      $data = [
+        'id_room' => $id_room
+      ];
+
+      return $database->select('SELECT * FROM rooms WHERE id_room = :id_room', $data);
     }
 }
 
