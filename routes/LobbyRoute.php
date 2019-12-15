@@ -1,8 +1,16 @@
 <?php
 
 include '../controllers/RoomController.php';
+include '../controllers/PinCodeController.php';
 
 session_start();
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+  $pin = new PinCodeController;
+  $_SESSION['pin'] = $pin->generateCodePin();
+}
+
+echo $_SESSION['pin'];
 
 if(empty($_SESSION['pin'])){
   header('Location: index.php');

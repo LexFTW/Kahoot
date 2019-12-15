@@ -12,12 +12,12 @@ include '../routes/LobbyRoute.php'
         <div class="card-body lobby__body">
           <h2 class="text-center mb-2 lobby__title">PIN CODE: <br /><?php echo $_SESSION['pin'] ?></h2>
 
-          <?php 
+          <?php
             if(count($players)==0){
               echo '<button type="button" class="btn btn-light btn-lg d-block mx-auto lobby__button">
             <i class="fas fa-play"></i></button>';
             }else{
-              echo '<button role="button" class="btn btn-success btn-lg d-block    mx-auto lobby__button"><i class="fas fa-play"></i></button>';
+              echo '<button role="button" class="btn btn-success btn-lg d-block mx-auto lobby__button"><i class="fas fa-play"></i></button>';
             }
            ?>
            <div class="row">

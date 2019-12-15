@@ -1,5 +1,5 @@
 <?php
-$target_dir = "../public/img/profile_image/";
+$target_dir = "18.213.245.30/Kahoot/public/img/profile_image/";
 
 include '../controllers/AuthController.php';
 
