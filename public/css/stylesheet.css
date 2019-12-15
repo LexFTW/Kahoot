@@ -220,6 +220,17 @@ body.animation {
   opacity: 1; /* Firefox */
 }
 
+.profile__img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profile__imgEdit{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
 
 @keyframes colorchange
 {

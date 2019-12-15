@@ -6,7 +6,10 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" onclick="document.getElementById('dropdown-menu-auth').classList.toggle('d-block')" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php echo $_SESSION['auth']->getName(); ?>
+            <?php 
+              echo $_SESSION['auth']->getName(); 
+              echo "<img class='profile__img' src='../public/img/profile_image/".$_SESSION['auth']->getImage()."'></img>"
+            ?>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="dropdown-menu-auth">
             <a class="dropdown-item" href="profile.php">Perfil</a>

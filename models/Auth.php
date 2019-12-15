@@ -5,11 +5,13 @@ class Auth{
     private $id;
     private $name;
     private $email;
+    private $image;
 
     public function __construct(){
       $this->id = 0;
       $this->name = 'Unknown';
       $this->email = 'Unknown';
+      $this ->image = NULL;
     }
 
     /**
@@ -80,6 +82,21 @@ class Auth{
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -58,7 +58,7 @@
 		public function update($query, $data){
 			try {
 				$stm = $this -> pdo->prepare($query);
-				$insert = $stm->execute($data);
+				$update = $stm->execute($data);
 				return $update;
 			} catch (Exception $e) {
 				echo $e->getMessage();
