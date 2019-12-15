@@ -10,7 +10,7 @@ class RoomController{
         'surveyID' => $id,
         'userID' => '1',
         'pin' => $pin,
-        'status' => 'playing'
+        'status' => '1'
       ];
       $database->insert('room', ['(surveyID, userID, pin, status)', '(:surveyID, :userID, :pin, :status)'], $data);
     }
@@ -20,12 +20,13 @@ class RoomController{
       $data = [
         'pin' => $_SESSION['pin']
       ];
-      $room = $database->select('SELECT * FROM room WHERE pin = :pin;', $data)[0]['id'];
+
+      $room = $database->select('SELECT * FROM rooms WHERE pin = :pin;', $data)[0]['id_room'];
       $data = [
-        'roomID' => $room,
-        'name' => $name
+        'id_room' => $room,
+        'username' => $name
       ];
-      return $database->insert('INSERT INTO player (roomID, name) VALUES (:roomID, :name);', $data);
+      return $database->insert('INSERT INTO players (id_room, username) VALUES (:id_room, :username);', $data);
     }
 
     function getPlayers($pin){
@@ -33,13 +34,13 @@ class RoomController{
       $data = [
         'pin' => $_SESSION['pin']
       ];
-      $room = $database->select('SELECT * FROM room WHERE pin = :pin;', $data)[0]['id'];
+      $room = $database->select('SELECT * FROM rooms WHERE pin = :pin;', $data)[0]['id_room'];
 
       $data = [
-        'roomID' => $room
+        'id_room' => $room
       ];
 
-      return $database->select('SELECT * FROM player WHERE roomID = :roomID', $data);
+      return $database->select('SELECT * FROM players WHERE id_room = :id_room', $data);
     }
 }
 

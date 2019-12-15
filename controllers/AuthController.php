@@ -48,7 +48,7 @@ class AuthController{
       }
     }
 
-        function changeProfile($id_user, $image_name){
+    function changeProfile($id_user, $image_name){
       try{
         $database = Database::getInstance();
         $data = [

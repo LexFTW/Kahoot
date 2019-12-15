@@ -44,9 +44,10 @@
         ];
 
         $isInsert = $poll->createAnswer($data);
-
+        uploadImage($id_question);
         if($isInsert == 1){
           showMessageSuccess('Se ha creado la pregunta correctamente! Actualizando...');
+
           header("Refresh:5");
         }
       }
@@ -63,6 +64,33 @@
     echo '<script>window.addEventListener("load", function(){' .
       'document.getElementsByClassName("alert")[1].style.display = "block";'.
       'document.getElementsByClassName("alert")[1].innerHTML += "'.$string.'"})</script>';
+  }
+
+
+  function uploadImage($id_question){
+    $target_dir = "../public/img/kahoot_image/";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+      $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image.";
+            $uploadOk = 0;
+        }
+
+      if ($uploadOk == 0) {
+          echo "Sorry, your file was not uploaded.";
+      }else{
+        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+        $question = new PollController;
+        $question ->changeImage($id_question,$_FILES["fileToUpload"]["name"]);
+      }
+    }
   }
 
  ?>

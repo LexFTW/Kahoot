@@ -50,6 +50,19 @@ class PollController{
     return $database->getLastId();
   }
 
+  function changeImage($id_question, $image_name){
+    try{
+      $database = Database::getInstance();
+      $data = [
+        'image' => $image_name,
+        'id_question' => $id_question
+      ];
+      return $database->update('UPDATE questions SET image = :image WHERE id_question = :id_question', $data);
+    }catch(Exception $e){
+      echo $e->getMessage();
+    }
+  }
+
 }
 
 

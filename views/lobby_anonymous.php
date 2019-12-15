@@ -14,7 +14,7 @@ include '../routes/LobbyRoute.php'
           <div class="row">
             <?php
               for ($i=0; $i < count($players); $i++) {
-                echo '<div class="col-4 text-center lobby__players" style="text-transform: uppercase">' . $players[$i]['name'] . '</div>';
+                echo '<div class="col-4 text-center lobby__players" style="text-transform: uppercase">' . $players[$i]['username'] . '</div>';
               }
             ?>
           </div>

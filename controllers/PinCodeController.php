@@ -9,7 +9,7 @@ class PinCodeController{
     $data = [
       'pin' => $pin
     ];
-    $pin = $database->select('SELECT * FROM room WHERE pin=:pin;', $data);
+    $pin = $database->select('SELECT * FROM rooms WHERE pin=:pin;', $data);
 
     return count($pin);
   }

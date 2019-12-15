@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $room = new RoomController;
     if($room->createAnonym($_POST['name'])){
     	unset( $_SESSION['auth']);
-      header('Location: lobbyAnonymous.php');
+      header('Location: lobby_anonymous.php');
       die();
     }else{
       

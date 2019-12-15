@@ -9,7 +9,7 @@ function generateFormQuestion(val){
 function generateTrueOrFalseQuestion(){
   var main = document.getElementById('question__main');
   main.innerHTML =
-  '<form method="post"> ' +
+  '<form method="post" enctype="multipart/form-data"> ' +
     '<input type="hidden" name="type_question" value="1" />' +
     '<div class="row">' +
       '<div class="form-group col-12">' +
@@ -29,7 +29,7 @@ function generateTrueOrFalseQuestion(){
             '<i class="fas fa-images mr-3"></i>Añadir Imagen' +
           '</div>' +
           '<div class="custom-file d-block mx-auto col-10">' +
-            '<input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">' +
+            '<input type="file" name="fileToUpload" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">' +
             '<label class="custom-file-label" for="inputGroupFile03">Elegir Archivo</label>' +
           '</div>' +
           '</span>' +

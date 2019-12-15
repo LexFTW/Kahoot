@@ -27,7 +27,5 @@ session_start();
 			$auth ->changeProfile($_SESSION['auth']->getId(),$_FILES["fileToUpload"]["name"]);
 			$_SESSION['auth']->setImage($_FILES["fileToUpload"]["name"]);
 		}
-		
-
 	}
  ?>
