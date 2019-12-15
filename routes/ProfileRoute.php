@@ -1,5 +1,5 @@
 <?php
-$target_dir = "18.213.245.30/Kahoot/public/img/profile_image/";
+$target_dir = "../public/img/profile_image/";
 
 include '../controllers/AuthController.php';
 
@@ -20,7 +20,6 @@ session_start();
 	    }
 
 		if ($uploadOk == 0) {
-    		echo "Sorry, your file was not uploaded.";
 		}else{
 			move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
 			$auth = new AuthController;
