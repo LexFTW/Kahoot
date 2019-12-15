@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
   $game = new GameController;
 
   $questions = $game->getQuestions($_SESSION['pin']);
-  print_r($questions);
+  $answers = $game->getAnswers($questions[0]['id_question']);
 }
 
 ?>
