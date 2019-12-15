@@ -14,15 +14,6 @@ class PinCodeController{
     return count($pin);
   }
 
-  function generateCodePin(){
-    $pin = '';
-    for ($i=0; $i < 4; $i++) {
-      $pin = $pin . random_int(0, 9);
-    }
-
-    return $pin;
-  }
-
 }
 
 

@@ -4,15 +4,9 @@ include '../models/Database.php';
 
 class RoomController{
 
-    public function createRoom($id, $pin){
+    public function createRoom($data){
       $database = Database::getInstance();
-      $data = [
-        'surveyID' => $id,
-        'userID' => '1',
-        'pin' => $pin,
-        'status' => '1'
-      ];
-      $database->insert('room', ['(surveyID, userID, pin, status)', '(:surveyID, :userID, :pin, :status)'], $data);
+      return $database->insert('INSERT INTO rooms (id_poll, id_user, pin, status) VALUES (:id_poll, :id_user, :pin, :status)', $data);
     }
 
     public function createAnonym($name){
@@ -41,6 +35,15 @@ class RoomController{
       ];
 
       return $database->select('SELECT * FROM players WHERE id_room = :id_room', $data);
+    }
+
+    function generateCodePin(){
+      $pin = '';
+      for ($i=0; $i < 4; $i++) {
+        $pin = $pin . random_int(0, 9);
+      }
+
+      return $pin;
     }
 }
 
