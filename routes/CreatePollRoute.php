@@ -17,7 +17,67 @@
     if($_POST['type_question'] == 1){
       insertQuestionTrueOrFalse();
     }else{
+      insertQuestionMultipleChoice();
+    }
+  }
 
+  function insertQuestionMultipleChoice(){
+    if(empty($_POST['title_question'])){
+      showMessageError('La campo de la pregunta es obligatorio.');
+    }else{
+      $poll = new PollController;
+      $data = [
+        'id_poll' => $_SESSION['id_poll'],
+        'id_user' => $_SESSION['auth']->getId(),
+        'title_question' => $_POST['title_question'],
+        'type_question' => $_POST['type_question']
+      ];
+
+      $isInsert = $poll->createQuestion($data);
+      if($isInsert == 1){
+        $id_question = $poll->getLastPollId();
+
+        $data = [
+            'id_question' => $id_question,
+            'name_answer' => $_POST['question_one'],
+            'correct' => 1
+        ];
+
+        $poll->createAnswer($data);
+
+        $data = [
+            'id_question' => $id_question,
+            'name_answer' => $_POST['question_two'],
+            'correct' => 0
+        ];
+
+        $poll->createAnswer($data);
+
+        $data = [
+            'id_question' => $id_question,
+            'name_answer' => $_POST['question_three'],
+            'correct' => 0
+        ];
+
+        $poll->createAnswer($data);
+
+        $data = [
+            'id_question' => $id_question,
+            'name_answer' => $_POST['question_four'],
+            'correct' => 0
+        ];
+
+        $isInsert = $poll->createAnswer($data);
+
+        if(!empty($_POST['fileToUpload'])){
+          uploadImage($id_question);
+        }
+
+        if($isInsert == 1){
+          showMessageSuccess('Se ha creado la pregunta correctamente! Actualizando...');
+          header("Refresh:5");
+        }
+      }
     }
   }
 
@@ -47,9 +107,9 @@
         if(!empty($_POST['fileToUpload'])){
           uploadImage($id_question);
         }
+
         if($isInsert == 1){
           showMessageSuccess('Se ha creado la pregunta correctamente! Actualizando...');
-
           header("Refresh:5");
         }
       }
@@ -78,7 +138,7 @@
 
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            // echo "File is an image - " . $check["mime"] . ".";
+            // echo "F  ile is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
             // echo "File is not an image.";
