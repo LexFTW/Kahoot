@@ -23,18 +23,11 @@ session_start();
     		echo "Sorry, your file was not uploaded.";
 		}else{
 			move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-        		//echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    		
-
+			$auth = new AuthController;
+			$auth ->changeProfile($_SESSION['auth']->getId(),$_FILES["fileToUpload"]["name"]);
+			$_SESSION['auth']->setImage($_FILES["fileToUpload"]["name"]);
 		}
-
-
-
-
 		
-		
-		$auth = new AuthController;
-		$auth ->changeProfile($_SESSION['auth']->getId(),$_FILES["fileToUpload"]["name"]);
-		$_SESSION['auth']->setImage($_FILES["fileToUpload"]["name"]);
+
 	}
  ?>
