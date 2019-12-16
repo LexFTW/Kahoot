@@ -9,6 +9,7 @@ include '../routes/PinCodeRoute.php';
   <div class="alert alert-danger d-block mx-auto" role="alert">
     <i class="fas fa-times mr-3"></i> El pin introducido es incorrecto.
   </div>
+  <a href="login.php" class="btn btn-primary float-right mt-4 mr-2"><i class="fas fa-lock"></i> </a>
   <main class="container-fluid">
     <div class="anonym">
       <div class="card anonym__card">

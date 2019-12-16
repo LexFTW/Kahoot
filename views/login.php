@@ -9,6 +9,7 @@ include 'layouts/head.php';
   <div class="alert alert-danger" role="alert">
     <i class="fas fa-times mr-3"></i>El usuario y/o la contraseña son incorrectos.
   </div>
+  <a href="index.php" class="btn btn-primary float-right mt-4 mr-2"><i class="fas fa-play"></i></a>
  	<main class="container-fluid">
  		<div class="row justify-content-center">
       <div class="col-md-8">
