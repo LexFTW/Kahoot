@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Temps de generació: 28-11-2019 a les 19:45:45
--- Versió del servidor: 5.7.28-0ubuntu0.18.04.4
--- Versió de PHP: 7.2.24-0ubuntu0.18.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 15-12-2019 a las 21:59:32
+-- Versión del servidor: 10.1.36-MariaDB
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,244 +19,267 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `Kahoot`
+-- Base de datos: `kahoot`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `answer`
+-- Estructura de tabla para la tabla `answers`
 --
 
-CREATE TABLE `answer` (
-  `id` int(11) NOT NULL,
-  `questionID` int(11) NOT NULL,
-  `text` varchar(191) NOT NULL,
-  `rightAnswer` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `player`
---
-
-CREATE TABLE `player` (
-  `id` int(11) NOT NULL,
-  `roomID` int(11) NOT NULL,
-  `name` varchar(192) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `answers` (
+  `id_answer` bigint(20) UNSIGNED NOT NULL,
+  `id_question` bigint(20) UNSIGNED NOT NULL,
+  `name_answer` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `question`
+-- Estructura de tabla para la tabla `players`
 --
 
-CREATE TABLE `question` (
-  `id` int(11) NOT NULL,
-  `surveyID` int(11) NOT NULL,
-  `text` varchar(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+CREATE TABLE `players` (
+  `id_player` bigint(20) UNSIGNED NOT NULL,
+  `id_room` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Estructura de la taula `room`
+-- Volcado de datos para la tabla `players`
 --
 
-CREATE TABLE `room` (
-  `id` int(11) NOT NULL,
-  `surveyID` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `pin` int(11) NOT NULL,
-  `status` varchar(191) NOT NULL,
-  `date` date NOT NULL,
-  `hour` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `players` (`id_player`, `id_room`, `username`) VALUES
+(5, 1, 'alesi');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `survey`
+-- Estructura de tabla para la tabla `polls`
 --
 
-CREATE TABLE `survey` (
-  `id` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
-  `name` varchar(192) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `polls` (
+  `id_poll` bigint(20) UNSIGNED NOT NULL,
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `name_poll` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Bolcant dades de la taula `survey`
+-- Volcado de datos para la tabla `polls`
 --
 
-INSERT INTO `survey` (`id`, `userID`, `name`) VALUES
-(1, 1, 'Not important stuff');
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `name` varchar(191) NOT NULL,
-  `lastName` varchar(191) NOT NULL,
-  `email` varchar(191) NOT NULL,
-  `password` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Bolcant dades de la taula `user`
---
-
-INSERT INTO `user` (`id`, `name`, `lastName`, `email`, `password`) VALUES
-(1, 'Almudena', 'Raya', 'r.almudena@gmail.com', 'd404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db');
+INSERT INTO `polls` (`id_poll`, `id_user`, `name_poll`) VALUES
+(1, 1, 'Geografia');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `vote`
+-- Estructura de tabla para la tabla `questions`
 --
 
-CREATE TABLE `vote` (
-  `answerID` int(11) NOT NULL,
-  `playerID` int(11) NOT NULL,
-  `roomID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `questions` (
+  `id_question` bigint(20) UNSIGNED NOT NULL,
+  `id_poll` bigint(20) UNSIGNED NOT NULL,
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `title_question` varchar(150) NOT NULL,
+  `description_question` varchar(250) DEFAULT NULL,
+  `type_question` int(11) NOT NULL DEFAULT '0',
+  `image` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Indexos per taules bolcades
+-- Volcado de datos para la tabla `questions`
 --
 
---
--- Index de la taula `answer`
---
-ALTER TABLE `answer`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fkanswer` (`questionID`);
+INSERT INTO `questions` (`id_question`, `id_poll`, `id_user`, `title_question`, `description_question`, `type_question`, `image`) VALUES
+(1, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(2, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(3, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(4, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(5, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(6, 1, 1, 'Pregutna1', NULL, 1, NULL),
+(7, 1, 1, 'pregunta 2', NULL, 1, NULL),
+(8, 1, 1, 'pregunta 2', NULL, 1, NULL),
+(9, 1, 1, 'asdasdda', NULL, 1, NULL),
+(10, 1, 1, 'asdasdda', NULL, 1, NULL),
+(11, 1, 1, 'xdxdxd', NULL, 1, NULL),
+(12, 1, 1, 'xdxdxd', NULL, 1, NULL),
+(13, 1, 1, 'xdxdxdxd', NULL, 1, NULL),
+(14, 1, 1, 'xdxdxdxd', NULL, 1, NULL),
+(15, 1, 1, 'xdasdsdfasf', NULL, 1, NULL),
+(16, 1, 1, 'ADASDFASDASD', NULL, 1, NULL),
+(17, 1, 1, 'ADASDFASDASD', NULL, 1, NULL),
+(18, 1, 1, 'ADASDFASDASD', NULL, 1, 'BlueStacks_2019.06.16_12.52.49.58.jpg');
+
+-- --------------------------------------------------------
 
 --
--- Index de la taula `player`
---
-ALTER TABLE `player`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `player` (`roomID`);
-
---
--- Index de la taula `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fkquestion` (`surveyID`);
-
---
--- Index de la taula `room`
---
-ALTER TABLE `room`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FKroom1` (`surveyID`),
-  ADD KEY `FKroom2` (`userID`);
-
---
--- Index de la taula `survey`
---
-ALTER TABLE `survey`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FKuserID` (`userID`);
-
---
--- Index de la taula `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index de la taula `vote`
---
-ALTER TABLE `vote`
-  ADD KEY `fkvote1` (`answerID`),
-  ADD KEY `fkvote2` (`playerID`),
-  ADD KEY `fkvote3` (`roomID`);
-
---
--- AUTO_INCREMENT per les taules bolcades
+-- Estructura de tabla para la tabla `rooms`
 --
 
+CREATE TABLE `rooms` (
+  `id_room` bigint(20) UNSIGNED NOT NULL,
+  `id_poll` bigint(20) UNSIGNED NOT NULL,
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `pin` int(4) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
--- AUTO_INCREMENT per la taula `answer`
+-- Volcado de datos para la tabla `rooms`
 --
-ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `rooms` (`id_room`, `id_poll`, `id_user`, `pin`, `status`) VALUES
+(1, 1, 1, 1234, 1);
+
+-- --------------------------------------------------------
+
 --
--- AUTO_INCREMENT per la taula `player`
+-- Estructura de tabla para la tabla `users`
 --
-ALTER TABLE `player`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `users` (
+  `id_user` bigint(20) UNSIGNED NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(150) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `image` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
--- AUTO_INCREMENT per la taula `question`
+-- Volcado de datos para la tabla `users`
 --
-ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+INSERT INTO `users` (`id_user`, `firstname`, `lastname`, `email`, `password`, `image`) VALUES
+(1, 'roger', 'carballo', 'rogertim3@gmail.com1', '6d16e989de5314f3eff5e0c4a24c2bf0fd7f8fe395e713ac839b325a10c4ed1191d1c972c49471efcaa197275b652464fc19007ea5f3542b798c6295b38a2b31', 'Star Wars Episodio II - El ataque de los clones.mkv_snapshot_00.00.07.587.jpg');
+
 --
--- AUTO_INCREMENT per la taula `room`
---
-ALTER TABLE `room`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT per la taula `survey`
---
-ALTER TABLE `survey`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT per la taula `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Restriccions per taules bolcades
+-- Índices para tablas volcadas
 --
 
 --
--- Restriccions per la taula `answer`
+-- Indices de la tabla `answers`
 --
-ALTER TABLE `answer`
-  ADD CONSTRAINT `fkanswer` FOREIGN KEY (`questionID`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`id_answer`),
+  ADD KEY `id_question` (`id_question`);
 
 --
--- Restriccions per la taula `player`
+-- Indices de la tabla `players`
 --
-ALTER TABLE `player`
-  ADD CONSTRAINT `player` FOREIGN KEY (`roomID`) REFERENCES `room` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `players`
+  ADD PRIMARY KEY (`id_player`),
+  ADD KEY `id_room` (`id_room`);
 
 --
--- Restriccions per la taula `question`
+-- Indices de la tabla `polls`
 --
-ALTER TABLE `question`
-  ADD CONSTRAINT `fkquestion` FOREIGN KEY (`surveyID`) REFERENCES `survey` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `polls`
+  ADD PRIMARY KEY (`id_poll`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Restriccions per la taula `room`
+-- Indices de la tabla `questions`
 --
-ALTER TABLE `room`
-  ADD CONSTRAINT `FKroom1` FOREIGN KEY (`surveyID`) REFERENCES `survey` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `FKroom2` FOREIGN KEY (`userID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id_question`),
+  ADD KEY `id_poll` (`id_poll`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Restriccions per la taula `survey`
+-- Indices de la tabla `rooms`
 --
-ALTER TABLE `survey`
-  ADD CONSTRAINT `FKuserID` FOREIGN KEY (`userID`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id_room`),
+  ADD UNIQUE KEY `pin` (`pin`),
+  ADD KEY `id_poll` (`id_poll`),
+  ADD KEY `id_user` (`id_user`);
 
 --
--- Restriccions per la taula `vote`
+-- Indices de la tabla `users`
 --
-ALTER TABLE `vote`
-  ADD CONSTRAINT `fkvote1` FOREIGN KEY (`answerID`) REFERENCES `answer` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fkvote2` FOREIGN KEY (`playerID`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fkvote3` FOREIGN KEY (`roomID`) REFERENCES `room` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `id_answer` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `players`
+--
+ALTER TABLE `players`
+  MODIFY `id_player` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `polls`
+--
+ALTER TABLE `polls`
+  MODIFY `id_poll` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id_question` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id_room` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`id_question`) REFERENCES `questions` (`id_question`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `players`
+--
+ALTER TABLE `players`
+  ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`id_room`) REFERENCES `rooms` (`id_room`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `polls`
+--
+ALTER TABLE `polls`
+  ADD CONSTRAINT `polls_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`id_poll`) REFERENCES `polls` (`id_poll`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `rooms`
+--
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`id_poll`) REFERENCES `polls` (`id_poll`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

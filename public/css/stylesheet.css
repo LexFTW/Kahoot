@@ -18,14 +18,40 @@ body{
   font-family: Montserrat;
 }
 
+body.animation {
+  width : 100%;
+  height : 100%;
+  position : absolute;
+  z-index : 0;
+  left : 0;
+  top : 0;
+  margin-left : 0;
+  margin-top : 0;
+  animation: colorchange; /* animation-name followed by duration in seconds*/
+     /* you could also use milliseconds (ms) or something like 2.5s */
+  -webkit-animation: colorchange; /* Chrome and Safari */
+  animation-duration: 50s;
+  animation-iteration-count: infinite;
+}
+
+.alert{
+  display: none;
+  border-radius: 0;
+  animation: fadeIn;
+  -webkit-animation: fadeIn; /* Chrome and Safari */
+  animation-duration: 1s;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+.alert-danger{
+  box-shadow: 0 0 5px 0 darkred;
+}
+
 .row{
   margin-right: 0;
   margin-left: 0;
-}
-
-.login__alert{
-  border-radius: 0;
-  display: none;
 }
 
 .login__card{
@@ -39,13 +65,13 @@ body{
   border-bottom: 0;
 }
 
-.login__input-group{
+.login__input-group, .poll__input-group{
   background: white;
   border: 0;
   border-radius: 0;
 }
 
-.login__input-form-control{
+.login__input-form-control, .poll__input-form-control{
   border-radius: 0;
   border: 0;
 }
@@ -77,6 +103,29 @@ body{
   border-radius: 0;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.lobby__card{
+  margin: 100px auto;
+  border: 0;
+  background: transparent;
+}
+
+.lobby__title, .lobby__players{
+  padding: 15px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.lobby__players{
+  text-transform: uppercase;
+}
+
+.lobby__button{
+  padding: 15px;
+  font-size: 4em;
+  margin-bottom: 10px;
 }
 
 .dashboard__container{
@@ -134,4 +183,94 @@ body{
 
 .dashboard_main_card{
   background: transparent; border: 0
+}
+
+.poll__group-title{
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 5px 5px 0px #ddd;
+}
+
+.poll__card_answer{
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+
+.poll__input-group-title, .poll__input-form-control-title{
+  font-size: 2em;
+}
+
+.poll__answer-editable{
+  font-weight: bold;
+}
+
+.poll__answer-editable::placeholder{
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.poll__answer-editable:-ms-input-placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.poll__answer-editable::-ms-input-placeholder{
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.profile__img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.profile__imgEdit{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+@keyframes colorchange
+{
+0% { background-color: maroon; }
+7.14% { background-color: red; }
+14.28% { background-color: orenge; }
+21.42% { background-color: yellow; }
+28.56% { background-color: olive; }
+35.7% { background-color: purple; }
+42.84% { background-color: fuchsia; }
+49.98% { background-color: coral; }
+57.12% { background-color: lime; }
+64.26% { background-color: green; }
+71.4% { background-color: navy; }
+78.54% { background-color: blue; }
+85.68% { background-color: aqua; }
+92.82% { background-color: teal; }
+100% {background-color:maroon;}
+}
+
+@keyframes fadeIn{
+  0% {top:-50px;}
+  100%{top:0px;}
+}
+
+@-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+{
+0% {background-color: maroon;}
+7.14% { background-color: red;}
+14.28% { background-color: orenge;}
+21.42% { background-color: yellow;}
+28.56% { background-color: olive;}
+35.7% { background-color: purple; }
+42.84% { background-color: fuchsia; }
+49.98% { background-color: white; }
+57.12% { background-color: lime; }
+64.26% { background-color: green; }
+71.4% { background-color: navy; }
+78.54% { background-color: blue; }
+85.68% { background-color: aqua; }
+92.82% { background-color: teal; }
+100% {background-color:black;}
 }
