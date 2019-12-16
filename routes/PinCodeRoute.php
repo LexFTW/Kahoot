@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       header('Location: anonym.php');
       die();
     }else{
-      echo '<script>window.addEventListener("load", function(){document.getElementsByClassName("alert")[0].style.display = "block!!important"})</script>';
+      echo '<script>window.addEventListener("load", function(){document.getElementsByClassName("alert")[0].style.display = "block!important"})</script>';
     }
   }else{
     echo '<script>window.addEventListener("load", function(){document.getElementsByClassName("alert")[0].style.display = "block!important"})</script>';

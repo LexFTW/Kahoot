@@ -13,23 +13,40 @@ include '../routes/ProfileRoute.php';
          <div class="card dashboard_main_card mt-3">
            <div class="card-body">
              <div class="row">
-              <div class="card">
-                <div class="card-body">
-                  <?php  
-                      echo "<img class='profile__imgEdit' src='../public/img/profile_image/".$_SESSION['auth']->getImage()."'></img>"
-                  ?>  
-                </div>
-              </div>
+               <div class="col-md-8">
+                 <div class="card">
+                   <div class="card-body">
+                     <?php
+                     echo "<img class='profile__imgEdit d-block mx-auto' src='../public/img/profile_image/".$_SESSION['auth']->getImage()."'></img>"
+                     ?>
+                     <form method="post">
+                       <div class="form-group">
+                         <label for="">Nombre Completo</label>
+                         <input type="text" name="name" value="<?php echo $_SESSION['auth']->getName() ?>" class="form-control">
+                       </div>
+                       <div class="form-group">
+                         <label for="">Email</label>
+                         <input type="text" name="name" value="<?php echo $_SESSION['auth']->getEmail() ?>" class="form-control">
+                       </div>
+                     </form>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-md-4">
+                 <div class="card h-100">
+                   <div class="card-body">
+                     <h4 class="mb-4">Menú de Gestión</h4>
+                     <button type="button" name="button" class="btn btn-primary mb-3 btn-block">Cambiar Contraseña</button>
+                     <button type="button" name="button" class="btn btn-primary mb-3 btn-block">Actualizar Foto de Perfil</button>
+                   </div>
+                 </div>
+               </div>
                <div class="card">
                   <div class="card-body">
-                    <div>
-
-                      
-                    </div>
-                      <form method="POST" enctype="multipart/form-data">
-                        <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
-                        <input type="submit">
-                      </form>
+                    <form method="POST" enctype="multipart/form-data">
+                      <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+                      <input type="submit">
+                    </form>
                   </div>
                </div>
              </div>
