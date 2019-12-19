@@ -7,7 +7,6 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" onclick="document.getElementById('dropdown-menu-auth').classList.toggle('d-block')" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php 
-              echo $_SESSION['auth']->getName(); 
               echo "<img class='profile__img' src='../public/img/profile_image/".$_SESSION['auth']->getImage()."'></img>"
             ?>
           </a>

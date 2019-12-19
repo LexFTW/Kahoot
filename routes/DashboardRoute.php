@@ -16,23 +16,33 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-  if(isset($_POST['id_poll'])){
-    $_SESSION['id_poll'] = $_POST['id_poll'];
-  }else if(isset($_POST['name_poll'])){
-    $data = [
-      'id_user' => $_SESSION['auth']->getId(),
-      'name_poll' => $_POST['name_poll']
-    ];
-
+  if(isset($_POST['crud'])){
+    $id_poll = $_POST['id_poll'];
     $poll = new PollController;
-    $polls = $poll->create($data);
+    $poll->removePoll($id_poll);
 
-    $id_poll = $poll->getLastPollId();
-    $_SESSION['id_poll'] = $id_poll;
+    header('Location: dashboard.php');
+    die();
+  }else{
+    if(isset($_POST['id_poll'])){
+      $_SESSION['id_poll'] = $_POST['id_poll'];
+    }else if(isset($_POST['name_poll'])){
+      $data = [
+        'id_user' => $_SESSION['auth']->getId(),
+        'name_poll' => $_POST['name_poll']
+      ];
+
+      $poll = new PollController;
+      $polls = $poll->create($data);
+
+      $id_poll = $poll->getLastPollId();
+      $_SESSION['id_poll'] = $id_poll;
+    }
+
+    header('Location: create_questions.php');
+    die();
   }
 
-  header('Location: create_questions.php');
-  die();
 }
 
  ?>

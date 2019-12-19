@@ -17,7 +17,7 @@
 
  	 	public static function getInstance(){
         	if (!self::$instance instanceof self) {
-            	self::$instance = new self('localhost', 'kahoot', 'root', '');
+            	self::$instance = new self('localhost', 'kahoot', 'kahoot', 'kahoot');
         	}
         	return self::$instance;
     	}
@@ -60,6 +60,16 @@
 				$stm = $this -> pdo->prepare($query);
 				$update = $stm->execute($data);
 				return $update;
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+		}
+
+		public function remove($query, $data){
+			try {
+				$stm = $this -> pdo->prepare($query);
+				$remove = $stm->execute($data);
+				return $remove;
 			} catch (Exception $e) {
 				echo $e->getMessage();
 			}

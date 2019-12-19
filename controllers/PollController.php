@@ -45,6 +45,16 @@ class PollController{
     return $database->insert('INSERT INTO polls (id_user, name_poll) VALUES (:id_user, :name_poll)', $data);
   }
 
+  public function removePoll($id_poll){
+    $database = Database::getInstance();
+
+    $data = [
+      'id_poll' => $id_poll
+    ];
+
+    return $database->remove('DELETE FROM polls WHERE id_poll = :id_poll', $data);
+  }
+
   public function getLastPollId(){
     $database = Database::getInstance();
     return $database->getLastId();

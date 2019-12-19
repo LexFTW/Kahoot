@@ -15,7 +15,13 @@ include '../routes/CreatePollRoute.php';
      <i class="fas fa-times text-secondary float-right mr-3" onclick="document.getElementsByClassName('alert')[1].style.display = 'none'"></i>
    </div>
    <?php include 'layouts/nav.php' ?>
-   <main class="container-fluid">
+   <main class="container-fluid pl-0 pr-0">
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb bg-light">
+         <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i></a></li>
+         <li class="breadcrumb-item active" aria-current="page">Creación de Kahoot</li>
+       </ol>
+     </nav>
      <div class="row mt-4">
        <div class="col-md-3">
          <div class="card">
